@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ios," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="#自定义控件  在- (instancetype)initWithFrame:(CGRect)frame里自定义控件在- (void)layoutSubviews  里布局控件  1234567名字叫attributes并且是NSDictionary *类型的参数，它的key一般都有以下规律 1.iOS7开始 1&amp;gt; 所有的key都来源于： NSAttributedString.h 2&amp;gt;">
+<meta name="keywords" content="ios">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 项目小知识点">
+<meta property="og:url" content="http://yoursite.com/2017/08/26/iOS 项目小知识点/index.html">
+<meta property="og:site_name" content="MRNAN">
+<meta property="og:description" content="#自定义控件  在- (instancetype)initWithFrame:(CGRect)frame里自定义控件在- (void)layoutSubviews  里布局控件  1234567名字叫attributes并且是NSDictionary *类型的参数，它的key一般都有以下规律 1.iOS7开始 1&amp;gt; 所有的key都来源于： NSAttributedString.h 2&amp;gt;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-494914586ad9f117.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-438449526306909c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-1b72dbea6ce3c123.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-13edc8b059e545ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-ae86d387b8e4f8e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-bc281de06bbc0996.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-ab6ca235996cb993.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-719483b12316733c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-08-27T07:00:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 项目小知识点">
+<meta name="twitter:description" content="#自定义控件  在- (instancetype)initWithFrame:(CGRect)frame里自定义控件在- (void)layoutSubviews  里布局控件  1234567名字叫attributes并且是NSDictionary *类型的参数，它的key一般都有以下规律 1.iOS7开始 1&amp;gt; 所有的key都来源于： NSAttributedString.h 2&amp;gt;">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/972822-494914586ad9f117.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/26/iOS 项目小知识点/"/>
+
+
+
+
+
+  <title>iOS 项目小知识点 | MRNAN</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MRNAN</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/26/iOS 项目小知识点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MRNAN">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MRNAN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS 项目小知识点</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-26T15:29:14+08:00">
+                2017-08-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#自定义控件</p>
+<blockquote>
+<p>在- (instancetype)initWithFrame:(CGRect)frame<br>里自定义控件<br>在- (void)layoutSubviews  里布局控件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">名字叫attributes并且是NSDictionary *类型的参数，它的key一般都有以下规律</div><div class="line"> 1.iOS7开始</div><div class="line"> 1&gt; 所有的key都来源于： NSAttributedString.h</div><div class="line"> 2&gt; 格式基本都是：NS***AttributeName</div><div class="line"> 2.iOS7之前</div><div class="line"> 1&gt; 所有的key都来源于： UIStringDrawing.h</div><div class="line"> 2&gt; 格式基本都是：UITextAttribute***</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  NSString * title = [button currentTitle]; // 获取按钮当前title文字</div><div class="line">  CGSize size = [title sizeWithAttributes:@&#123;NSFontAttributeName:button.titleLabel.font&#125;];//根据字体计算大小</div><div class="line">_titleUnderLine.backgroundColor = [titleButton titleColorForState:UIControlStateSelected]; //根据按钮title 颜色设置下划线颜色</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>#cell分割线顶头操作</p>
+<p>##1.第一种方法，利用系统的属性去设置</p>
+<blockquote>
+<p>项目中经常会有些需求是cell 的分割线顶头，而系统默认的是前面有一定的间距，其实这是由一个separatorInset 属性造成的(iOS7以后出的)，通过打印：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidAppear:(BOOL)animated</div><div class="line">&#123;</div><div class="line">    NXLog(@&quot;margin:%@&quot;,NSStringFromUIEdgeInsets(self.tableView.separatorInset));</div><div class="line">&#125;</div><div class="line"></div><div class="line">打印结果：</div><div class="line">margin:&#123;0, 15, 0, 0&#125;   //可以看出来系统默认有一个15的偏移量</div></pre></td></tr></table></figure>
+<blockquote>
+<p>将该属性设置为空，现在tableView里面设置：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> self.tableView.separatorInset = UIEdgeInsetsZero; //分隔线顶头，这个只是设置tableView 顶头，还需要在cell里设置cell的顶头</div><div class="line">通过这一步设置发现分割线比之前左移了不少，但是还没顶到头，这里就判断是cell自身的原因</div></pre></td></tr></table></figure>
+<blockquote>
+<p>同时在cell 里面进行设置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.separatorInset = UIEdgeInsetsZero;//cell分割线顶头</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>这时候运行再看结果，已经OK顶到头。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/972822-494914586ad9f117.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>##tableView底层实现</p>
+<blockquote>
+<p>1.tableView 先把所有cell 的尺寸计算好，保存到一个数组里。<br>2.当cell 要显示的时候就拿到这个cell 去设置frame : cell.frame = frames[row]。</p>
+</blockquote>
+<p>##2.第二种方法，重写cell 的setFrame,可以随意设置cell 的间距，比较万能。</p>
+<blockquote>
+<p>主要思路：主要就是利用了上面的tableView 的实现原理。<br>1.首先设置tableView的背景色为分割线的颜色。<br>2.禁掉系统的分割线<br>3.在cell类中重写setFrame 方法。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> self.tableView.backgroundColor = NXColor(220, 220, 221);</div><div class="line"> self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;</div><div class="line"></div><div class="line">//在自定义的cell类中：</div><div class="line">- (void)setFrame:(CGRect)frame</div><div class="line">&#123;</div><div class="line">    NXLog(@&quot;cellFrame:%@&quot;,NSStringFromCGRect(frame));</div><div class="line">    //因为之前的frame 都是计算好的，这是在要显示的时候去设置一下，所以这里只去将高度减1，不会影响到其他尺寸</div><div class="line">    frame.size.height -=1;  // 如果想要间距更大的话可以 -=10 等，随意这种方法比较万能</div><div class="line">    //这个才是系统真正的设置frame。重写了这个方法会将系统的frame清空，所以需要调用这个</div><div class="line">    [super setFrame:frame];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>#屏幕适配</p>
+<blockquote>
+<p>1.一个view从Xib 加载，需不需要重新固定一下尺寸？    这个是一定得需要的，比较保险。<br>2.一般添加xib view的时候是在viewDidLoad 里面加载，但是设置尺寸frame  最好在viewDidLayoutSubViews  里面去设置。因为viewDidLoad 并不会去布局frame ，只是拿到xib 设置的大小属性，只有在 viewDidLayoutSubViews 里才会去根据布局去确定控件的最终尺寸(不过添加view 的操作不能放在这里，因为这个方法会调用多次)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">🌰：</div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    UIView * loginView = [NXLoginRegistView loginView];</div><div class="line">    [self.middleView addSubview:loginView];</div><div class="line">    UIView * registView = [NXLoginRegistView registView];</div><div class="line">    [self.middleView addSubview:registView];</div><div class="line">    UIView * fastLogin = [NXFastLoginView fastLoginView];</div><div class="line">    [self.bottomView addSubview:fastLogin];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)viewDidLayoutSubviews</div><div class="line">&#123;</div><div class="line">    [super viewDidLayoutSubviews];</div><div class="line">    //在这里面设置尺寸</div><div class="line">    UIView * loginView = [self.middleView subviews][0];</div><div class="line">    loginView.frame = CGRectMake(0, 0, self.middleView.frame.size.width * 0.5, self.middleView.frame.size.height);</div><div class="line">    UIView * registView = [self.middleView subviews][1];</div><div class="line">    registView.frame = CGRectMake(self.middleView.frame.size.width * 0.5, 0, self.middleView.frame.size.width * 0.5, self.middleView.frame.size.height);</div><div class="line">    UIView * fastLogin = [self.bottomView subviews][0];</div><div class="line">    fastLogin.frame = CGRectMake(0, 0, self.bottomView.frame.size.width, self.bottomView.frame.size.height);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>#从Xib加载的view 设置动画</p>
+<blockquote>
+<p>是通过操作约束去设置，比如要修改x值产生动画就找到x的约束拖线添到类文件中成为属性，然后对该属性进行操作，在设置动画时，必须加上这句 ：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self.view layoutIfNeeded]; //这句话很重要，只有重新布局才会产生动画效果，否则没有动画效果</div></pre></td></tr></table></figure>
+<blockquote>
+<p>例如</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[UIView animateWithDuration:1 animations:^&#123;</div><div class="line">        self.testViewWidthConstraint.constant = 200;</div><div class="line">        [self.view layoutIfNeeded]; //这句话很重要，只有重新布局才会产生动画效果，否则没有动画效果</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p>#一个xib文件可以管理多个view</p>
+<p>#重写button 的布局   </p>
+<blockquote>
+<p>这个在项目中也很常见，默认的按钮布局是左右布局，即左边imageView + 右边label 。而好多项目中需要的是上下布局，所以需要自定义button，重新布局。这里在layoutSubViews 方法里面进行，因为在这个方法里面所有的控件尺寸都已经是计算好的，我们就不需要重新去计算，只要改一下布局就可以。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">🌰：</div><div class="line">- (void)layoutSubviews</div><div class="line">&#123;</div><div class="line">    [super layoutSubviews];</div><div class="line">    self.imageView.nx_y = 0;</div><div class="line">    self.imageView.nx_centerX = self.nx_centerX;</div><div class="line">    self.titleLabel.nx_y = self.nx_height - self.titleLabel.nx_height;</div><div class="line">    self.titleLabel.nx_centerX = self.nx_centerX;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>#自定义tabBar的问题</p>
+<blockquote>
+<p>项目中需要定制tabBar 的时候需要用到自定义tabBar,这里需要注意的是不能直接通过如下的赋值语法进行替换：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">🌰：</div><div class="line">   NXTabBar * nTabBar = [[NXTabBar alloc]init];</div><div class="line">   self.tabBar = nTabBar;</div><div class="line">这样替换的话是没有效果的，需要用KVC 的形式进行替换：</div><div class="line"></div><div class="line"> [self setValue:nTabBar forKey:@&quot;tabBar&quot;];</div></pre></td></tr></table></figure>
+<p>#iOS类私有属性的访问和修改<br><a href="http://www.jianshu.com/p/a667f0ce9573" target="_blank" rel="external">http://www.jianshu.com/p/a667f0ce9573</a></p>
+<p>#iOS 类别中添加属性（属性和实例变量的区别）<br><a href="http://www.cnblogs.com/crazypebble/p/3439261.html" target="_blank" rel="external">【转】iOS中属性与成员变量的区别</a><br><a href="http://www.jianshu.com/p/535d1574cb86" target="_blank" rel="external">iOS Category中添加属性和成员变量的区别</a></p>
+<p>#通过category 和 runtime 设置textField 的 placehold  的颜色</p>
+<blockquote>
+<p>项目中经常会用到textField ，比如登录注册等。默认的光标是蓝色，而且placeholder的文字颜色也是灰的，不会变化。有时候项目会需求点击后光标为白色，同时placeholder 的文字高亮为白色(或其他颜色)。通过头文件一级一级往上查找，找到了一个如下属性:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property(nullable, nonatomic,copy)   NSAttributedString     *attributedPlaceholder</div></pre></td></tr></table></figure>
+<blockquote>
+<p>利用这个属性，用如下方法进行颜色修改：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//第一个参数: 需要被设置属性的字符串</div><div class="line">//第二个参数: 需要设置的属性</div><div class="line">   self.attributedPlaceholder = [[NSAttributedString alloc]initWithString:self.placeholder attributes:@&#123;NSForegroundColorAttributeName:[UIColor whiteColor]&#125;];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这个方法虽然达到效果了，但是比较麻烦，通过如下图的方式，随便写一个textField ,然后打上短点，我们可以看到在textField 内部有placeholderLabel的属性，所以可以尝试通过对该属性进行操作，直接修改颜色。不过通过下面的调试框可以看到这是一个私有属性。想要对私有属性进行访问和修改可以使用kvc 或者 runtime ,这里使用kvc ,新建一个类别，添加属性placeholderColor,在set 方法里面去进行设置：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">🌰：</div><div class="line">h 文件</div><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line"></div><div class="line">@interface UITextField (NXTextField)</div><div class="line">@property (nonatomic ,strong)UIColor *placeholdColor;</div><div class="line">@end</div><div class="line"></div><div class="line">m 文件</div><div class="line">- (void)setPlaceholdColor:(UIColor *)placeholdColor</div><div class="line">&#123;</div><div class="line">    //根据判断，textField 内部的 placehold  是一个label 的标签</div><div class="line"></div><div class="line">    UILabel * placeholderLabel = [self valueForKey:@&quot;placeholderLabel&quot;];</div><div class="line">    placeholderLabel.textColor = placeholdColor;</div><div class="line"></div><div class="line">&#125;</div><div class="line">- (UIColor *)placeholdColor&#123;</div><div class="line">    return nil;  // 暂时先不用，返回一个nil ，去掉系统的警告⚠️</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>然后可以在需要设置的地方引入category 的头文件，通过如下方式即可设置颜色：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.placeholdColor = [UIColor lightGrayColor];</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/972822-438449526306909c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<blockquote>
+<p>通过上面category 的方式基本可以满足需求，但是如果textField 如下设置的时候就会出现无效：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 这样设置是可以的：</div><div class="line">  self.placeholder = @&quot;44444&quot;;</div><div class="line">  self.placeholdColor = [UIColor lightGrayColor];</div><div class="line"></div><div class="line">//将上面的换个顺序执行，就会无效:</div><div class="line"> self.placeholdColor = [UIColor lightGrayColor];</div><div class="line"> self.placeholder = @&quot;44444&quot;;</div><div class="line"></div><div class="line">//这是因为之前没有设置placeholder文字，设置颜色的时候通过断点可以看到，此时获取不到placeholderLabel,所以导致设置颜色无效。</div></pre></td></tr></table></figure>
+<blockquote>
+<p>解决这个问题就需要用到runtime<br>1.先将 placeholderColor 保存起来<br>2.在设置placeholder 的时候再取出来设置颜色</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">- (void)setPlaceholdColor:(UIColor *)placeholdColor</div><div class="line">&#123;</div><div class="line">    //先将placeholdColor 存起来</div><div class="line">    //参数一：给哪个对象添加成员属性</div><div class="line">    //参数二：成员属性的名字</div><div class="line">    //参数三：成员属性的值</div><div class="line">    objc_setAssociatedObject(self, @&quot;placeholdColor&quot;, placeholdColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</div><div class="line"></div><div class="line">    //根据判断，textField 内部的 placehold  是一个label 的标签</div><div class="line"></div><div class="line">    UILabel * placeholderLabel = [self valueForKey:@&quot;placeholderLabel&quot;];</div><div class="line">    placeholderLabel.textColor = placeholdColor;</div><div class="line"></div><div class="line">&#125;</div><div class="line">- (UIColor *)placeholdColor&#123;</div><div class="line">    return objc_getAssociatedObject(self, @&quot;placeholdColor&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//自顶一个setPlaceholder方法，在内部1.先设置文字。 2.设置颜色</div><div class="line">- (void)setNX_Placeholder:(NSString *)placeholder</div><div class="line">&#123;</div><div class="line">    self.placeholder = placeholder;</div><div class="line">    self.placeholdColor = self.placeholdColor;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面方法有个缺点就是每次设置placeholder文字还得去调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self setNX_Placeholder:@&quot;hhhh&quot;];</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>所以想要直接通过:    <strong> self.placeholder = @”hhhh”; </strong>去设置，就需要用到方法交换。因为交换只需要做一次操作，所以，放到<strong>+(void)load</strong>方法里去操作,在category文件中加入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">+ (void)load&#123;</div><div class="line">    Method setPlaceholder = class_getInstanceMethod(self, @selector(setPlaceholder:));</div><div class="line">    Method setNx_Placeholder = class_getInstanceMethod(self, @selector(setNX_Placeholder:));</div><div class="line">    method_exchangeImplementations(setPlaceholder, setNx_Placeholder);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>#计算总行数的万能公式</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">row = (count -1 ) / column +1;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>#tableView  调整cell 间距</p>
+<blockquote>
+<p>用storyBoard 拖出来的cell 默认显示的是如下图的间距(因为要使用到静态单元格，所以用到storyBoard,一般情况下用xib最好)<br><img src="http://upload-images.jianshu.io/upload_images/972822-1b72dbea6ce3c123.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+</blockquote>
+<p>这里用的是分组style，所以可以通过设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">self.tableView.sectionFooterHeight = 0;</div><div class="line"> self.tableView.sectionHeaderHeight = 0;</div></pre></td></tr></table></figure></p>
+<p>得到如下效果:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/972822-13edc8b059e545ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>可以看到每个分组之间的间距已经没了，但是第一个cell 距离顶部还是有好大一部分距离，这里判断可能是tableView 的间距,通过下面打印</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/972822-ae86d387b8e4f8e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>可以看到tableView 距离顶部确实有64 的偏移量，但是这个刚好是空出导航栏的高度，所以排除是tableView 的问题，接下来就判断是cell 的问题，通过下面打印</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/972822-bc281de06bbc0996.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>可以看到分组内部第一个cell 的Y 值默认是35 ，那么这里可以在viewDidLoad 方法里进行如下调整就可以（这里需要间隔为10）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">self.tableView.sectionFooterHeight = 0;</div><div class="line"> self.tableView.sectionHeaderHeight = 10;</div><div class="line"> self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0);</div></pre></td></tr></table></figure></p>
+<p>#跳转到网页</p>
+<blockquote>
+<p>1.<code>Safari  openURL</code>  自带很多功能:进度条，刷新，前进，倒退等功能。但是需要跳出到当前应用。<br>2.<code>UIWebView</code>  在当前应用打开网页，并且带有Safari（自己实现），不能实现进度条。<br>3.<code>SFSafariViewController</code>   专门用来显示网页,既可以在当前应用显示网页，又可以有Safari的功能。iOS9以后才可以用。<br>4.WKWebView</p>
+<p>#判断view 是否被加载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">随便一个都可以:</div><div class="line">  UIViewController * vc = self.childViewControllers[button.tag];</div><div class="line">   if (vc.isViewLoaded) &#123;//如果已经被加载过就不重复加载(加载view  的时候会调用 viewDidLoad)</div><div class="line">            return ;</div><div class="line">    &#125;</div><div class="line">    UIView * view = vc.view;</div><div class="line">    if (view.superview) &#123; // 如果有父view ，说明已经被添加过</div><div class="line">            return;</div><div class="line">    &#125;</div><div class="line">    if (view.window) &#123; //如果有容器，说明已经被添加过</div><div class="line">            return;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="一些全局常量，尽量使用extern来引用，其次再选择考虑Macro"><a href="#一些全局常量，尽量使用extern来引用，其次再选择考虑Macro" class="headerlink" title="一些全局常量，尽量使用extern来引用，其次再选择考虑Macro"></a>一些全局常量，尽量使用extern来引用，其次再选择考虑Macro</h1><blockquote>
+<p><a href="http://www.cnblogs.com/oumygade/p/4316024.html" target="_blank" rel="external">iOS const的使用</a><br><a href="http://www.jianshu.com/p/ed2dfbca6e73" target="_blank" rel="external">关于全局常量的定义</a></p>
+</blockquote>
+<p>#xib cell 拖线报错： Terminating app due to uncaught exception ‘NSUnknownKeyException’, reason: ‘[<nsobject 0x8a4b500=""> setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key</nsobject></p>
+<blockquote>
+<p>如下图，我已开始在File`s Owner里也设置了class是NXTopicCell,所以一直出错，这里吧他清空，设置下面的Topic Cell 的class如下就可以<br><img src="http://upload-images.jianshu.io/upload_images/972822-ab6ca235996cb993.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>xib拖的UILabel 没有自动换行：设置约束时不要给定高度就可以自动换行了。</p>
+</blockquote>
+<p>#在heightForRowAtIndexPath获取cell 崩溃<br><a href="http://www.jianshu.com/p/3da539540d21" target="_blank" rel="external">http://www.jianshu.com/p/3da539540d21</a></p>
+<blockquote>
+<p>在网上看到有人是这么获取：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NXTopicCell * cell = (NXTopicCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>试了下好像是可以。</p>
+<blockquote>
+<p>好像xib  里设置的高度是定死的，不会根据不同屏幕去重新计算高度。</p>
+</blockquote>
+<p>##退出键盘</p>
+<blockquote>
+<p>1.监听scrollView实时滚动代理方法调用[self.view endEditing:YES]或者[self.textField resignFirstResponse];<br>2.touchBegin方法里,调用[self.view endEditing:YES]或者[self.textField resignFirstResponse];</p>
+</blockquote>
+<p>##父View添加手势，子View不要去响应父View点击事件<br><a href="http://www.it610.com/article/4821007.htm" target="_blank" rel="external">iOS 点击子视图不让其响应父视图手势</a></p>
+<blockquote>
+<p>在做这样一个界面的时候</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/972822-719483b12316733c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<blockquote>
+<p>背景的蒙版层是一个UIView,按钮的列表View添加到背景的蒙版View上。在蒙版层添加一个手势，点击dismiss掉这个界面和蒙版。但是遇到问题就是在点击按钮列表的View的时候也出发了单击手势。这个好像是系统默认的，参考事件响应链。为了避免这种效果，在手势触发事件中可以判断当前点击事件是否在父View上，如果是子View上则不去做操作，点击在父View上才去做dismiss的操作。代码如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">- (void)dismissMoreActionView:(UITapGestureRecognizer *)tap</div><div class="line">&#123;</div><div class="line">    //根绝tag获取子view</div><div class="line">    UIView *subView = [self viewWithTag:100];</div><div class="line"></div><div class="line">    /*</div><div class="line">     BOOL contains = CGRectContainsPoint(CGRect rect, CGPoint point);</div><div class="line">    判断一个CGRect是否包含再另一个CGRect里面,常用与测试给定的对象之间是否又重叠</div><div class="line"></div><div class="line">     - (CGPoint)locationInView:(UIView *)view：</div><div class="line">     该函数返回一个CGPoint类型的值，表示触摸在view这个视图上的位置，这里返回的位置是针对view的坐标</div><div class="line">    */    </div><div class="line">    // 判断手势点击的位置是不是包含在子视图上</div><div class="line">    if (!CGRectContainsPoint(subView.frame, [tap locationInView:self])) &#123;      </div><div class="line">        [self removeFromSuperview];</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="调整导航栏leftBarButtonItem-和-rightBarbuttonItem-的偏移量"><a href="#调整导航栏leftBarButtonItem-和-rightBarbuttonItem-的偏移量" class="headerlink" title="调整导航栏leftBarButtonItem 和 rightBarbuttonItem 的偏移量"></a>调整导航栏leftBarButtonItem 和 rightBarbuttonItem 的偏移量</h2><p><a href="http://yikuwang.blog.51cto.com/6186082/1696156" target="_blank" rel="external"> 如何调整导航条上的leftBarButtonItem和rightBarButtonItem的位置</a></p>
+<blockquote>
+<p>####重点：<br>这里需要提到BarButtonSystemItem的样式－ UIBarButtonSystemItemFixedSpace<br>我不多说 请看官方解释:Blank space to add between other items. Only the <a href="https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIBarButtonItem_Class/index.html#//apple_ref/occ/instp/UIBarButtonItem/width" target="_blank" rel="external">width</a> property is used when this value is set.  反正我是看不懂 。再来说说negativeSpacer.width = 0 表示leftBarButtonItem的x离屏幕的左边还有15像素 同样表示rightBarButtonItem的CGRectGetMaxX()离屏幕的右边还有15像素 那么好像我们就可以通过negativeSpacer.width来调整leftBarButtonItem的位置。搞了老半天原来就是得靠这家伙。但有一点：negativeSpacer.width赋值负数对于leftBarButtonItem来说是左移多少像素 对于rightBarButtonItem来说是右移多少像素  反之亦然.</p>
+</blockquote>
+<p>我这里想要设置右边的item 右移一点，因为默认的太偏左了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">UIButton * buyBtn = [[UIButton alloc]init];</div><div class="line"></div><div class="line">    buyBtn.frame = CGRectMake(0, 0, 80, 40);</div><div class="line"></div><div class="line">    buyBtn.backgroundColor = [UIColor orangeColor];</div><div class="line"></div><div class="line">    [buyBtn setTitle:@&quot;马上选购&quot; forState:UIControlStateNormal];</div><div class="line"></div><div class="line">    buyBtn.titleLabel.font = [UIFont systemFontOfSize:15];</div><div class="line"></div><div class="line">    [buyBtn addTarget:self action:@selector(buyItemAction) forControlEvents:UIControlEventTouchUpInside];</div><div class="line"></div><div class="line">    UIBarButtonItem * buyItem = [[UIBarButtonItem alloc]initWithCustomView:buyBtn];</div><div class="line"></div><div class="line">    UIBarButtonItem * space = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];</div><div class="line">    space.width = -10;</div><div class="line"></div><div class="line">    self.navigationItem.rightBarButtonItems = @[space,buyItem];</div></pre></td></tr></table></figure></p>
+<p>##动态修改UIButton的title 的时候字体闪烁的问题：<br> <a href="http://blog.csdn.net/a330416020/article/details/41648787" target="_blank" rel="external">UIButton-system类型 动态改变title 显示文字时闪动(解决方案)</a></p>
+<hr>
+<p>##assign 修饰代理导致野指针的问题</p>
+<blockquote>
+<p>在下面方法中调用了代理，崩溃指向这里显示野指针的错误，猜测是由于代理被释放而去调用产生的问题。点进去看到之前代理修饰用的是assign 修饰的，改为weak 后好像是可以了。猜测原因是由于assign 修饰的话 assign是指针赋值，不对引用计数操作，使用之后如果没有置为nil，可能就会产生野指针；而weak一旦不进行使用后，永远不会使用了，就不会产生野指针。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section</div><div class="line">&#123;</div><div class="line">     if ([_delegate respondsToSelector:@selector(numberOfRowsInTableView:Insection:FromView:)])</div><div class="line">     &#123;</div><div class="line">          NSInteger vRows = [_dataSource numberOfRowsInTableView:tableView Insection:section FromView:self];</div><div class="line">          mRowCount = vRows;</div><div class="line">          return vRows;</div><div class="line">     &#125;</div><div class="line">     return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##单例问题</p>
+<blockquote>
+<p>在使用单例的时候，经常性就是直接写出下面的代码。不过最近在使用的时候会遇到单例导致崩溃的问题。一开始在写 <code>dispatch_once_t once_token</code>的时候没有用static 来修饰，后来加上static来修饰就好了。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">+ (instancetype)shareInstance</div><div class="line">&#123;</div><div class="line">    static DrawTextView * drawText = nil;</div><div class="line"></div><div class="line">    static dispatch_once_t once_token;</div><div class="line"></div><div class="line">    dispatch_once(&amp;once_token, ^&#123;</div><div class="line"></div><div class="line">        drawText = [[DrawTextView alloc]initWithFrame:CGRectMake(kDeviceW * 0.5- TextLayerWidth * 0.5, kDeviceH * 0.5 - TextLayerHeight * 0.5, TextLayerWidth, TextLayerHeight)];</div><div class="line">        drawText.backgroundColor = [UIColor orangeColor];</div><div class="line">    &#125;);</div><div class="line">    return drawText;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##在iPhone5s （10.2系统）拨打电话没有弹框提示，其他手机（10.3）有弹框<br>```<br>//   用这种方法的话会出现上面的问题<br>//     NSString * phonNum = [NSString stringWithFormat:@”tel://%@”,self.footerModel.dav_phone];</p>
+<pre><code>NSString * phonNum = [NSString stringWithFormat:@&quot;telprompt://%@&quot;, self.footerModel.dav_phone];
+</code></pre><p>##控制器切换从下往上，并且有导航栏：</p>
+<blockquote>
+<p>可以用CATransition 动画，或者直接用presentModalViewController。<br><a href="http://www.cocoachina.com/bbs/read.php?tid=7668" target="_blank" rel="external">http://www.cocoachina.com/bbs/read.php?tid=7668</a></p>
+</blockquote>
+<p>##改变SearchBar 的取消按钮颜色，光标颜色</p>
+<blockquote>
+<p><a href="http://www.jianshu.com/p/66b5b777f5dc" target="_blank" rel="external">http://www.jianshu.com/p/66b5b777f5dc</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ios/" rel="tag"># ios</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/26/清除缓存/" rel="prev" title="清除缓存">
+                清除缓存 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="MRNAN" />
+          <p class="site-author-name" itemprop="name">MRNAN</p>
+           
+              <p class="site-description motion-element" itemprop="description">世界那么污，我想去看看。。。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Nsir15" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/ef7eb6bec183" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      简书
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://gitee.com/Nsir" target="_blank" title="开源中国">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      开源中国
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一些全局常量，尽量使用extern来引用，其次再选择考虑Macro"><span class="nav-number">1.</span> <span class="nav-text">一些全局常量，尽量使用extern来引用，其次再选择考虑Macro</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#调整导航栏leftBarButtonItem-和-rightBarbuttonItem-的偏移量"><span class="nav-number">1.1.</span> <span class="nav-text">调整导航栏leftBarButtonItem 和 rightBarbuttonItem 的偏移量</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MRNAN</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
