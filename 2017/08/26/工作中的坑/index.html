@@ -95,20 +95,20 @@
 
 
 
-<meta name="description" content="######1.通过xib加载的控件在viewDidLoad 中重新计算布局不准确的问题  在爱山门实时上门模块，由于之前没有加网络提示器或者没网的空白页之类的，在网络情况差的情况下，直接就是一个空白页放在那里，用户体验特别不好，所以这里需要加上一个网络的提示器在加载的时候进行弹窗提示用户，记载成功的话就直接显示数据，失败的话就提示网络问题。这个直接用SVProgress就可以。由于这里的界面布局">
+<meta name="description" content="1.通过xib加载的控件在viewDidLoad 中重新计算布局不准确的问题 在爱山门实时上门模块，由于之前没有加网络提示器或者没网的空白页之类的，在网络情况差的情况下，直接就是一个空白页放在那里，用户体验特别不好，所以这里需要加上一个网络的提示器在加载的时候进行弹窗提示用户，记载成功的话就直接显示数据，失败的话就提示网络问题。这个直接用SVProgress就可以。由于这里的界面布局比较固定，所以">
 <meta name="keywords" content="ios">
 <meta property="og:type" content="article">
 <meta property="og:title" content="工作中的坑">
 <meta property="og:url" content="http://yoursite.com/2017/08/26/工作中的坑/index.html">
 <meta property="og:site_name" content="MRNAN">
-<meta property="og:description" content="######1.通过xib加载的控件在viewDidLoad 中重新计算布局不准确的问题  在爱山门实时上门模块，由于之前没有加网络提示器或者没网的空白页之类的，在网络情况差的情况下，直接就是一个空白页放在那里，用户体验特别不好，所以这里需要加上一个网络的提示器在加载的时候进行弹窗提示用户，记载成功的话就直接显示数据，失败的话就提示网络问题。这个直接用SVProgress就可以。由于这里的界面布局">
+<meta property="og:description" content="1.通过xib加载的控件在viewDidLoad 中重新计算布局不准确的问题 在爱山门实时上门模块，由于之前没有加网络提示器或者没网的空白页之类的，在网络情况差的情况下，直接就是一个空白页放在那里，用户体验特别不好，所以这里需要加上一个网络的提示器在加载的时候进行弹窗提示用户，记载成功的话就直接显示数据，失败的话就提示网络问题。这个直接用SVProgress就可以。由于这里的界面布局比较固定，所以">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-4abd7d944d99ddc5.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-339b15f2d12c83ce.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2017-08-27T06:58:42.000Z">
+<meta property="og:updated_time" content="2017-08-28T01:31:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工作中的坑">
-<meta name="twitter:description" content="######1.通过xib加载的控件在viewDidLoad 中重新计算布局不准确的问题  在爱山门实时上门模块，由于之前没有加网络提示器或者没网的空白页之类的，在网络情况差的情况下，直接就是一个空白页放在那里，用户体验特别不好，所以这里需要加上一个网络的提示器在加载的时候进行弹窗提示用户，记载成功的话就直接显示数据，失败的话就提示网络问题。这个直接用SVProgress就可以。由于这里的界面布局">
+<meta name="twitter:description" content="1.通过xib加载的控件在viewDidLoad 中重新计算布局不准确的问题 在爱山门实时上门模块，由于之前没有加网络提示器或者没网的空白页之类的，在网络情况差的情况下，直接就是一个空白页放在那里，用户体验特别不好，所以这里需要加上一个网络的提示器在加载的时候进行弹窗提示用户，记载成功的话就直接显示数据，失败的话就提示网络问题。这个直接用SVProgress就可以。由于这里的界面布局比较固定，所以">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/972822-4abd7d944d99ddc5.gif?imageMogr2/auto-orient/strip">
 
 
@@ -385,8 +385,7 @@
       
 
       
-        <p>######1.通过xib加载的控件在viewDidLoad 中重新计算布局不准确的问题</p>
-<blockquote>
+        <h6 id="1-通过xib加载的控件在viewDidLoad-中重新计算布局不准确的问题"><a href="#1-通过xib加载的控件在viewDidLoad-中重新计算布局不准确的问题" class="headerlink" title="1.通过xib加载的控件在viewDidLoad 中重新计算布局不准确的问题"></a>1.通过xib加载的控件在viewDidLoad 中重新计算布局不准确的问题</h6><blockquote>
 <p>在爱山门<code>实时上门</code>模块，由于之前没有加网络提示器或者没网的空白页之类的，在网络情况差的情况下，直接就是一个空白页放在那里，用户体验特别不好，所以这里需要加上一个网络的提示器在加载的时候进行弹窗提示用户，记载成功的话就直接显示数据，失败的话就提示网络问题。这个直接用SVProgress就可以。由于这里的界面布局比较固定，所以最好可以再做一个本地缓存，利用FMDB将上一次的数据存到本地，下次打开的话先从数据库去获取数据，没有的话再去网络请求。这里遇到了一个问题，折腾了大半个上午。就是每次通过本地缓存去加载数据的时候滑动范围总是不准，在viewDidLoad中已经计算好了scrollView 的高度和tableView 的高度，但是在viewDidDissAppear 中再去打印的话会发现尺寸并不是我们计算的那个结果。下拉刷新或者直接去加载网络的数据的时候就没问题。后来一直调试查找猜测应该是xib 的问题，<code>因为这里的scrollView 和 tableView 都是通过xib 去加载的，通过xib 加载的文件在viewDidLoad中加载的时候并不会去布局frame ，只是拿到xib 中设置的大小属性，只有在 viewDidLayoutSubViews 里才会去根据布局去确定控件的最终尺寸(不过添加view 的操作不能放在这里，因为这个方法会调用多次)</code></p>
 </blockquote>
 <hr>
@@ -504,8 +503,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -604,6 +612,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-通过xib加载的控件在viewDidLoad-中重新计算布局不准确的问题"><span class="nav-number">1.</span> <span class="nav-text">1.通过xib加载的控件在viewDidLoad 中重新计算布局不准确的问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
