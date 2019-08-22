@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -74,21 +74,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="iOS," />
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="iOS,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
 
 
 
@@ -139,7 +139,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/01/工作中的坑/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/01/工作中的坑/">
 
 
 
@@ -173,7 +173,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">MRNAN</span>
         <span class="logo-line-after"><i></i></span>
@@ -203,7 +203,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -213,7 +213,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -223,7 +223,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -236,7 +236,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -257,9 +257,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -300,7 +298,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="MRNAN">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -336,7 +334,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -393,21 +391,21 @@
 <blockquote>
 <p>好多项目中都会有这样的需求，导航栏透明或者隐藏，但是push 到下一个界面，如果用手势返回的话就会出现如上的问题，</p>
 </blockquote>
-<p>比如<strong>积分商城</strong>：<br>个人中心界面需要隐藏导航栏，设置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillAppear:(BOOL)animated</div><div class="line">&#123;</div><div class="line">     [super viewWillAppear:animated];</div><div class="line"></div><div class="line">     [self.navigationController setNavigationBarHidden:YES animated:animated];</div><div class="line"></div><div class="line">     [self getCenter];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>点击积分商城需要显示导航栏，设置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillAppear:(BOOL)animated</div><div class="line">&#123;</div><div class="line">     [super viewWillAppear:animated];</div><div class="line"></div><div class="line">//     [Glob showTabBar];</div><div class="line"></div><div class="line">     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];</div><div class="line"></div><div class="line">     [self.navigationController setNavigationBarHidden:NO animated:YES];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>比如<strong>积分商城</strong>：<br>个人中心界面需要隐藏导航栏，设置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewWillAppear:(BOOL)animated</span><br><span class="line">&#123;</span><br><span class="line">     [super viewWillAppear:animated];</span><br><span class="line"></span><br><span class="line">     [self.navigationController setNavigationBarHidden:YES animated:animated];</span><br><span class="line"></span><br><span class="line">     [self getCenter];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>点击积分商城需要显示导航栏，设置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewWillAppear:(BOOL)animated</span><br><span class="line">&#123;</span><br><span class="line">     [super viewWillAppear:animated];</span><br><span class="line"></span><br><span class="line">//     [Glob showTabBar];</span><br><span class="line"></span><br><span class="line">     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];</span><br><span class="line"></span><br><span class="line">     [self.navigationController setNavigationBarHidden:NO animated:YES];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>如果只是这样设置的话手势返回的话就会出现上面的问题。网上找了各种资料和三方库，比如 <a href="[http://www.jianshu.com/p/31f177158c9e](https://link.juejin.im/?target=http%3A%2F%2Fwww.jianshu.com%2Fp%2F31f177158c9e">让我们一次性解决导航栏的所有问题
-</a>),由于之前项目中使用的tabBar 是 三方的<code>RDVTabBarController</code>，所以用上面文章中的三方总会出先手势返回的时候上一个控制器被一个空白的UIView挡住的情况。所以又开始找其他的同样不是很完美。最后抱着瞎猫碰死耗子的心态，就试试网上的一些建议，采用如下写法，在<code>积分商城界面</code>加上如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillDisappear:(BOOL)animated</div><div class="line">&#123;</div><div class="line">     [self.navigationController setNavigationBarHidden:NO animated:YES];</div><div class="line">     [super viewWillDisappear:animated] ;  // 切记要加这个，不然没效果</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>一开始在一个空白的项目中做了测试，这样确实是可以了，但是放到公司项目却还是没用，一开始怀疑是  <code>[super viewWillDisappear:animated]</code>方法应该放在最后调用，后来测试放在前面和后面都没区别。最后发现问题是在<code>个人中心界面</code>，一开始个人中心界面隐藏导航栏的时候，动画那块设置的是NO：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self.navigationController setNavigationBarHidden:YES animated:NO];</div></pre></td></tr></table></figure></p>
-<p>最后改成如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[self.navigationController setNavigationBarHidden:YES animated:animated];</div><div class="line"></div><div class="line">至于这里的animated 写成 没有写成YES OR NO 是因为在网上看到过系统返回的属性不只是这两个（虽然我也不懂）不过这里animated 写成YES 也可以。</div></pre></td></tr></table></figure></p>
+</a>),由于之前项目中使用的tabBar 是 三方的<code>RDVTabBarController</code>，所以用上面文章中的三方总会出先手势返回的时候上一个控制器被一个空白的UIView挡住的情况。所以又开始找其他的同样不是很完美。最后抱着瞎猫碰死耗子的心态，就试试网上的一些建议，采用如下写法，在<code>积分商城界面</code>加上如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewWillDisappear:(BOOL)animated</span><br><span class="line">&#123;</span><br><span class="line">     [self.navigationController setNavigationBarHidden:NO animated:YES];</span><br><span class="line">     [super viewWillDisappear:animated] ;  // 切记要加这个，不然没效果</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>一开始在一个空白的项目中做了测试，这样确实是可以了，但是放到公司项目却还是没用，一开始怀疑是  <code>[super viewWillDisappear:animated]</code>方法应该放在最后调用，后来测试放在前面和后面都没区别。最后发现问题是在<code>个人中心界面</code>，一开始个人中心界面隐藏导航栏的时候，动画那块设置的是NO：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.navigationController setNavigationBarHidden:YES animated:NO];</span><br></pre></td></tr></table></figure></p>
+<p>最后改成如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[self.navigationController setNavigationBarHidden:YES animated:animated];</span><br><span class="line"></span><br><span class="line">至于这里的animated 写成 没有写成YES OR NO 是因为在网上看到过系统返回的属性不只是这两个（虽然我也不懂）不过这里animated 写成YES 也可以。</span><br></pre></td></tr></table></figure></p>
 <p>发现可以正常使用了。效果如下：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/972822-339b15f2d12c83ce.gif?imageMogr2/auto-orient/strip" alt="hhhh.gif"></p>
-<p>Perfect!<br><code>更新</code><br><code>后来发现只需要在个人中心设置</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self.navigationController setNavigationBarHidden:YES animated:animated] // 这里animated 写成YES 也可以</div></pre></td></tr></table></figure></p>
-<p><code>不用再在其他界面再添加</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillDisappear:(BOOL)animated</div><div class="line">&#123;</div><div class="line">     [self.navigationController setNavigationBarHidden:NO animated:YES];</div><div class="line">     [super viewWillDisappear:animated] ;  // 切记要加这个，不然没效果</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Perfect!<br><code>更新</code><br><code>后来发现只需要在个人中心设置</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.navigationController setNavigationBarHidden:YES animated:animated] // 这里animated 写成YES 也可以</span><br></pre></td></tr></table></figure></p>
+<p><code>不用再在其他界面再添加</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewWillDisappear:(BOOL)animated</span><br><span class="line">&#123;</span><br><span class="line">     [self.navigationController setNavigationBarHidden:NO animated:YES];</span><br><span class="line">     [super viewWillDisappear:animated] ;  // 切记要加这个，不然没效果</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><code>也一样可以实现效果</code></p>
 <h6 id="3-使用字典转模型的时候遇到崩溃-NSInvalidArgumentException-NSTaggedPointerString-unsignedLongLongValue-unrecognized-selector-sent-to-instance"><a href="#3-使用字典转模型的时候遇到崩溃-NSInvalidArgumentException-NSTaggedPointerString-unsignedLongLongValue-unrecognized-selector-sent-to-instance" class="headerlink" title="3.使用字典转模型的时候遇到崩溃 NSInvalidArgumentException -[__NSTaggedPointerString unsignedLongLongValue]: unrecognized selector sent to instance"></a>3.使用字典转模型的时候遇到崩溃 <code>NSInvalidArgumentException -[__NSTaggedPointerString unsignedLongLongValue]: unrecognized selector sent to instance</code></h6><blockquote>
 <p>这个问题，是因为64bit中，NSString 中没有unsignedLongLongValue这个方法了， 而当字典中obj的类型是NSString类型，实体中的key对应的属性是NSUinteger类型，setValue:obj forKey:key 会自动做如下处理：<br>[obj unsignedLongLongValue] 将value转为对应的属性类型，这就导致64bit中找不到该方法而crash。解决是，对NSString写一个category，重新写一个unsignedLongLongValue的方法：</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-(NSUinteger)unsignedLongLongValue &#123;</div><div class="line">   return [self integerValue];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-(NSUinteger)unsignedLongLongValue &#123;</span><br><span class="line">   return [self integerValue];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>或者 避免 让系统做NSString-&gt;NSUInteger的类型装换</p>
 
       
@@ -504,7 +502,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -515,9 +513,7 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="MRNAN" />
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="MRNAN">
           <p class="site-author-name" itemprop="name">MRNAN</p>
            
               <p class="site-description motion-element" itemprop="description">世界那么污，我想去看看。。。</p>
@@ -530,7 +526,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -642,10 +638,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
