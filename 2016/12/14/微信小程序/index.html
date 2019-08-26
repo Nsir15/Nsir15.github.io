@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    
+    <meta charset="utf-8">
+    <meta name="baidu-site-verification" content="vvVgSQUzPU">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content>
+    
+    <meta name="description" content="世界那么污，我想去看看。。。">
+    <title>MRNAN - 个人博客</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/style/style.css">
+  </head>
+  <body>
+    <div id="fixed-menu">
+      <span class="iconfont icon-arrowup"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="head">
+      
+      <a href="/" class>
+        Home
+      </a>
+      
+      <a href="/archives" class>
+        Archives
+      </a>
+      
+      <a href="/about" class>
+        About
+      </a>
+      
+    </div>
+    <div id="container">
+      <div id="main">
+        <div class="navbar">
+          <div class="toggle">
+            <span class="iconfont icon-menu toggle-icon"></span>
+          </div>
+          <div class="search">
+            <div class="input-warp">
+              <span class="iconfont icon-sousuo"></span>
+              <input type="text" name id placeholder="Search Keys">
+            </div>
+          </div>
+        </div>
+        <div class="content">
+          <article class="post-entry">
+    <div class="header">
+      <div class="title">微信小程序</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2016/12/14</span>
+        </span>
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/小程序">小程序</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/小程序">小程序</a>
+                  
+                
+            </span>
+          </span>
+         
+        <span class="item leancloud-visitors" id="http://yoursite.com/2016/12/14/微信小程序/" data-flag-title="微信小程序">
+          <span class="iconfont icon-eye1"></span>
+          <span class="leancloud-visitors-count"></span>
+        </span>
+      </div>
+      <div>
+      </div>
+    </div>
+    <h2 id="快速创建页面"><a href="#快速创建页面" class="headerlink" title="快速创建页面"></a>快速创建页面</h2><p><code>操作步骤说明
+新建一个默认（HelloWorld）或者空白项目，或者打开自己的项；
+假设我们要在根目录下创建一个页面，取名为：tianxiaxue；
+打开微信小程序配置文件【app.json】，在&quot;pages&quot;:[]数据中写入一条页面路径；
+同时按住电脑【Ctrl+S】保存。其他同理，需要创建某一路径的页面，可以通过输入页面路径快速创建；</code></p>
+<h3 id="链接：快速创建页面及正则使用技巧"><a href="#链接：快速创建页面及正则使用技巧" class="headerlink" title="链接：快速创建页面及正则使用技巧"></a>链接：<a href="https://link.zhihu.com/?target=http%3A//www.wxapp-union.com/forum.php%3Fmod%3Dviewthread%26tid%3D1482%26highlight%3D%25E9%259D%25A2%25E5%2590%2591%25E6%2596%25B0%25E6%2589%258B" target="_blank" rel="noopener">快速创建页面及正则使用技巧</a></h3><a id="more"></a>
+<h6 id="个人理解"><a href="#个人理解" class="headerlink" title="个人理解"></a>个人理解</h6><blockquote>
+<ul>
+<li>app.js 相当于Appdelegate , 是整个程序的入口</li>
+<li>index.js/log.js 相当于是每个控制器viewController,对应每个页面逻辑</li>
+<li>http/https : 协议, .com/.cn…. : 域名</li>
+<li>当有APPID的情况下，进行网络通信，只能和指定的域名进行通信。如果没有进行配置，编译时会报如下错误：</li>
+</ul>
+</blockquote>
+<p><img src="http://img.blog.csdn.net/20161115135942850" alt></p>
+<p><code>在 iOS 上，小程序的 javascript 代码是运行在 JavaScriptCore 中
+在 Android 上，小程序的 javascript 代码是通过 X5 内核来解析
+在 开发工具上， 小程序的 javascript 代码是运行在 nwjs（chrome内核） 中。所以开发工具上的效果跟实际效果有所出入。</code></p>
+<h5 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h5><p><img src="http://www.wxapp-union.com/data/attachment/portal/201612/12/011611l21b6p1xr6zeenh3.png" alt></p>
+<blockquote>
+<p>小程序包含一个描述整体程序的 app 和多个描述各自页面的 page。<br> 一个小程序主体部分由三个文件组成，必须放在项目的根目录，如下：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">文件</th>
+<th style="text-align:center">必须</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">app.js</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">小程序逻辑</td>
+</tr>
+<tr>
+<td style="text-align:center">app.json</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">小程序公共设置</td>
+</tr>
+<tr>
+<td style="text-align:center">app.wxss</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">小程序公共样式表，定义在 app.wxss 中的样式为全局样式，可用于任何Page。在 Page 里的 wxss 文件中定义的样式为局部样式，只作用在当前页面，并会覆盖 app.wxss 中相同的选择器</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>pages目录下为小程序页面，每个页面须建立独立的文件夹，例如上面生成的小程序有两个页面，分别为pages/index、pages/logs，一个页面由四个文件组成，分别是：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">文件</th>
+<th style="text-align:left">必须</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">js</td>
+<td style="text-align:left">是</td>
+<td>页面逻辑</td>
+</tr>
+<tr>
+<td style="text-align:center">wxml</td>
+<td style="text-align:left">是</td>
+<td>页面结构</td>
+</tr>
+<tr>
+<td style="text-align:center">wxss</td>
+<td style="text-align:left">否</td>
+<td>页面样式表</td>
+</tr>
+<tr>
+<td style="text-align:center">json</td>
+<td style="text-align:left">否</td>
+<td>页面配置</td>
+</tr>
+</tbody>
+</table>
+<h6 id="page-json"><a href="#page-json" class="headerlink" title="page.json"></a>page.json</h6><blockquote>
+<p>每一个小程序页面也可以使用.json文件来对本页面的窗口表现进行配置。 页面的配置比app.json全局配置简单得多，只是设置 app.json 中的 window 配置项的内容，页面中配置项会覆盖 app.json 的 window 中相同的配置项。</p>
+</blockquote>
+<blockquote>
+<p>页面的.json只能设置 window 相关的配置项，以决定本页面的窗口表现，所以无需写 window 这个键，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;navigationBarBackgroundColor&quot;: &quot;#ffffff&quot;,</span><br><span class="line">  &quot;navigationBarTextStyle&quot;: &quot;black&quot;,</span><br><span class="line">  &quot;navigationBarTitleText&quot;: &quot;微信接口功能演示&quot;,</span><br><span class="line">  &quot;backgroundColor&quot;: &quot;#eeeeee&quot;,</span><br><span class="line">  &quot;backgroundTextStyle&quot;: &quot;light&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h3><blockquote>
+<p><a href="http://www.wxappclub.com/topic/734" target="_blank" rel="noopener">从0到1：初学者入门Demo</a></p>
+</blockquote>
+<blockquote>
+<p><a href="http://www.wxapp-union.com/article-713-1.html" target="_blank" rel="noopener">微信小程序框架详解《一》配置文件及其支持的配置属性</a></p>
+</blockquote>
+<blockquote>
+<p><a href="http://www.wxapp-union.com/article-402-1.html" target="_blank" rel="noopener">CTT团队实战教程系列《一》小安娜B站系列：准备与事先须知</a></p>
+</blockquote>
+<blockquote>
+<p><a href="http://www.wxapp-union.com/article-465-1.html" target="_blank" rel="noopener">程序员开发实战系列《二》微信小程序架构篇</a></p>
+</blockquote>
+
+
+  
+
+  
+  <div class="post-reward">
+    <div id="reward-button">请杯咖啡呗~</div>
+    <div id="qr">
+      <div class="wrap">
+          
+          <div class="bg-wrap">
+            <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+            支付宝
+          </div>
+          
+          
+          <div class="bg-wrap">
+              <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+            微信
+          </div>
+          
+      </div>
+    </div>
+    
+
+  </div>
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="http://yoursite.com">MRNAN</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="http://yoursite.com/2016/12/14/微信小程序/">http://yoursite.com/2016/12/14/微信小程序/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="http://yoursite.com">MRNAN</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+</article>
+        </div>
+        <footer>
+          <div class="copyright">
+            ©2019 <a href="http://yoursite.com">MRNAN</a>. Powered by Hexo &
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+      <div id="card-wrap">
+        <div class="card">
+          <div class="logo-widget">
+            <div class="author">
+              Utone
+            </div>
+            <div class="logo" style="background-image: url('/images/logo.jpeg')"></div>
+          </div>
+          <div class="locate-widget">
+            <div class="city-wrap">
+              <span class="iconfont icon-dangdi"></span>
+              <span id="city-name"></span>
+            </div>
+            <div class="weather-wrap">
+              <div id="weather-img">
+                <svg class="icon weather" aria-hidden="true">
+                  <use xlink:href="#icon-qingjiafeng"/>
+                </svg>
+              </div>
+              <div id="weather-detail"></div>
+            </div>
+          </div>
+          <div class="follow-widget">
+            
+            <a href="https://github.com/shixiaohu2206" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://www.facebook.com/shi.xiaohu.5" target="_block">
+              <span class="iconfont icon-facebook"></span>
+            </a>
+            
+            <a href="https://www.instagram.com/shi_xiaohu/" target="_block">
+              <span class="iconfont icon-instagram"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+           
+          <div class="toc-widget">
+            <div class="title">
+              <span>Toc</span>
+            </div>
+            <div class="post-toc">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#快速创建页面"><span class="toc-text">快速创建页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#链接：快速创建页面及正则使用技巧"><span class="toc-text">链接：快速创建页面及正则使用技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#个人理解"><span class="toc-text">个人理解</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#目录结构"><span class="toc-text">目录结构</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#page-json"><span class="toc-text">page.json</span></a></li></ol></li></ol></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#资料"><span class="toc-text">资料</span></a></li>
+            </div>
+          </div>
+           
+          <div class="category-widget">
+            <div class="title">
+              <span>Categories</span>
+              <span><a href="/archives">···</a></span>
+            </div>
+            <div class="list">
+              <ul>
+                 
+                <li>
+                  <a href="/categories/前端/">
+                    前端
+                  </a>
+                </li>
+                  
+                <li>
+                  <a href="/categories/iOS/">
+                    iOS
+                  </a>
+                </li>
+                  
+                <li>
+                  <a href="/categories/git/">
+                    git
+                  </a>
+                </li>
+                  
+                <li>
+                  <a href="/categories/hexo/">
+                    hexo
+                  </a>
+                </li>
+                  
+                <li>
+                  <a href="/categories/小程序/">
+                    小程序
+                  </a>
+                </li>
+                 
+              </ul>
+            </div>
+          </div>
+          <div class="tag-widget">
+            <div class="title">
+              <span>Tag Cloud</span>
+              <span><a href>···</a></span>
+            </div>
+            <div class="tag-cloud">
+              <a href="/tags/git/" style="font-size: 13px; color: #4a4a4a">git</a> <a href="/tags/hexo/" style="font-size: 13px; color: #4a4a4a">hexo</a> <a href="/tags/iOS/" style="font-size: 20px; color: #4a4a4a">iOS</a> <a href="/tags/前端/" style="font-size: 16.5px; color: #4a4a4a">前端</a> <a href="/tags/小程序/" style="font-size: 13px; color: #4a4a4a">小程序</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+  window.THEME_CONFIG = JSON.parse('{"title":"MRNAN","subtitle":"个人博客","description":"世界那么污，我想去看看。。。","author":"MRNAN","language":"zh-Hans","timezone":null,"url":"http://yoursite.com","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"huhu","deploy":{"type":"git","repo":{"github":"git@github.com:Nsir15/Nsir15.github.io.git","oschina":"https://gitee.com/Nsir/Nsir.oschina.io.git"}},"ignore":[],"search":{"path":"search.xml","field":"post","format":"html","limit":10000},"index_generator":{"per_page":10,"order_by":"-date","path":""},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":10},"tag_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"menu":{"home":"/","archives":"/archives","about":"/about"},"logo":"/images/logo.png","categories_max":5,"tags_max":10,"favicon":"/images/favicon.ico","site_search":true,"rss":"/atom.xml","follow":{"github":"https://github.com/shixiaohu2206","facebook":"https://www.facebook.com/shi.xiaohu.5","instagram":"https://www.instagram.com/shi_xiaohu/"},"search_url":"/search.xml","site_icp":"","site_friends":{"房间里的小猫咪":"http://baidu.com"},"busuanzi":true,"share":["weibo","weixin","qqkongjian","QQ","douban","facebook","twitter","google"],"cdn_module":{"av_min":"https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min","jquery":"https://cdn.bootcss.com/jquery/3.4.1/jquery.min","busuanzi":"//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini","confirm":"https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min","fancybox":"https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"},"baidu_push":true,"reward":{"weixin":"images/weixin.png","zhifubao":"images/zhifubao.png"}}')
+  window.loadJs = function(d, m, a) {
+    var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+    var b = document.createElement('script')
+    b.defer = true
+    b.setAttribute('type', 'text/javascript')
+    b.setAttribute('charset', 'UTF-8')
+    b.setAttribute('async', 'true')
+    b.setAttribute('src', d)
+    m && b.setAttribute('data-main', '/scripts/app')
+    if (typeof a === 'function') {
+      if (window.attachEvent) {
+        b.onreadystatechange = function() {
+          var e = b.readyState
+          if (e === 'loaded' || e === 'complete') {
+            b.onreadystatechange = null
+            a()
+          }
+        }
+      } else {
+        b.onload = a
+      }
+    }
+    c.appendChild(b)
+  }
+  loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {
+    require.config({
+      paths: {
+        // site
+        share: 'share',
+        iconfont: 'iconfont',
+        hodgepodge: 'hodgepodge',
+        valine: ['cdn/Valine.min'],
+
+        // cdn
+        av: ['https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min', 'cdn/av-min'],
+        jquery: ['https://cdn.bootcss.com/jquery/3.4.1/jquery.min', 'cdn/jquery.min'],
+        busuanzi: ['//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini', 'cdn/busuanzi.pure.mini'],
+        confirm: ['https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min', 'cdn/jquery.confirm.min'],
+        fancybox: ['https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min', 'cdn/jquery.fancybox.min']
+      },
+
+      map: {
+        '*': {
+          // css: '/scripts/cdn/css-min.js'
+          css: 'https://cdn.bootcss.com/require-css/0.1.10/css.min.js'
+        }
+      },
+
+      shim: {
+        fancybox: {
+          // deps: ['css!../style/fancybox']
+          deps: ['css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css']
+        },
+        confirm: {
+          // deps: ['css!../style/confirm']
+          deps: ['css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css']
+        }
+      },
+
+      // 加载超时
+      waitSeconds: 3
+    })
+  })
+</script>
+
+<script>
+  ;(function() {
+    var bp = document.createElement('script')
+    var curProtocol = window.location.protocol.split(':')[0]
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+    }
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(bp, s)
+  })()
+</script>
+

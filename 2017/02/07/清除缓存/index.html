@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    
+    <meta charset="utf-8">
+    <meta name="baidu-site-verification" content="vvVgSQUzPU">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content>
+    
+    <meta name="description" content="世界那么污，我想去看看。。。">
+    <title>MRNAN - 个人博客</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/style/style.css">
+  </head>
+  <body>
+    <div id="fixed-menu">
+      <span class="iconfont icon-arrowup"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="head">
+      
+      <a href="/" class>
+        Home
+      </a>
+      
+      <a href="/archives" class>
+        Archives
+      </a>
+      
+      <a href="/about" class>
+        About
+      </a>
+      
+    </div>
+    <div id="container">
+      <div id="main">
+        <div class="navbar">
+          <div class="toggle">
+            <span class="iconfont icon-menu toggle-icon"></span>
+          </div>
+          <div class="search">
+            <div class="input-warp">
+              <span class="iconfont icon-sousuo"></span>
+              <input type="text" name id placeholder="Search Keys">
+            </div>
+          </div>
+        </div>
+        <div class="content">
+          <article class="post-entry">
+    <div class="header">
+      <div class="title">清除缓存</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2017/02/07</span>
+        </span>
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/iOS">iOS</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/iOS">iOS</a>
+                  
+                
+            </span>
+          </span>
+         
+        <span class="item leancloud-visitors" id="http://yoursite.com/2017/02/07/清除缓存/" data-flag-title="清除缓存">
+          <span class="iconfont icon-eye1"></span>
+          <span class="leancloud-visitors-count"></span>
+        </span>
+      </div>
+      <div>
+      </div>
+    </div>
+    <blockquote>
+<p>现在的大多数APP都带有缓存功能，尤其是使用一些第三方框架，比如SDWebImage 就自带缓存功能。当用了一段时间后，缓存就会越来愈大，如果不清除的话就会影响用户体验和性能，所以大多📚APP加了清除缓存的功能。这里的主要实现思路也是根据SDWebImage 的思路去实现。这里需要用到一个 <code>simpholders</code>工具可以直接查看沙盒下的东西。</p>
+</blockquote>
+<a id="more"></a>
+<p>#1.获取缓存</p>
+<blockquote>
+<p>既然是参考SDWebImage去实现，那么首先就是进去看看他是怎么实现的，首先先导入  <code>#import &lt;SDWebImage/SDImageCache.h&gt;</code>头文件，这是SDWebImage 的一个管理缓存的类，点进去在文件中搜索关键词<code>cache</code>,会看到好多结果，一直往下拉，会看到这么几个方法：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">我们看到里面有这样一个方法，很明显这个是我们常写的单例。待会儿会用到</span><br><span class="line">/**</span><br><span class="line"> * Returns global shared cache instance</span><br><span class="line"> *</span><br><span class="line"> * @return SDImageCache global instance</span><br><span class="line"> */</span><br><span class="line">+ (SDImageCache *)sharedImageCache;</span><br></pre></td></tr></table></figure>
+<p>再往下就看到下面的方法：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/972822-76b9698975a5678b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>这些根据字面意思很容易看出来都是干什么的。既然这里我们的第一步是想先获取缓存，那么我们就主要先看一下<code>getSize</code>方法，点击进去会看到如下方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (NSUInteger)getSize &#123;</span><br><span class="line">    __block NSUInteger size = 0;</span><br><span class="line">    dispatch_sync(self.ioQueue, ^&#123;</span><br><span class="line">        NSDirectoryEnumerator *fileEnumerator = [_fileManager enumeratorAtPath:self.diskCachePath];</span><br><span class="line">        for (NSString *fileName in fileEnumerator) &#123;</span><br><span class="line">            NSString *filePath = [self.diskCachePath stringByAppendingPathComponent:fileName];</span><br><span class="line">            NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];</span><br><span class="line">            size += [attrs fileSize];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    return size;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们看到需要用到一个 <code>_fileManager</code>的对象，这是一个<code>NSFileManager</code> 的对象,我们先回到我们的类文件中，去调用一下getSize 方法获取缓存。通过上面的工具我们可以查看SDWebImage的缓存文件：<code>在default文件下面就是</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/972822-3aa2931213721d05.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> NSUInteger  cach = [[SDImageCache sharedImageCache] getSize];</span><br><span class="line"> NXLog(@&quot;sdweb-----caches:%lu&quot;,(unsigned long)cach);</span><br><span class="line"></span><br><span class="line">打印结果如下</span><br><span class="line">2017-02-06 23:41:09.554 BaiSi[44360:1314372] sdweb-----caches:2824429</span><br></pre></td></tr></table></figure>
+<p>通过右键查看文件，得到结果如下，比打印结果大是因为这里还包括了隐藏文件.DS</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/972822-28f89493e425914d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>我们也以获取这个文件夹缓存的大小为试验，看看自己写的结果是否和SD 的一样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">- (void)clearCach&#123;</span><br><span class="line">    //1.先获取cache 目录的路径</span><br><span class="line">    NSString * cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];</span><br><span class="line">    // 这里先以获取 default  文件夹大小做实验，看看是否和 SDImageCache 获取的一样</span><br><span class="line">    NSString * directorPath = [cachePath stringByAppendingPathComponent:@&quot;default&quot;];</span><br><span class="line">    //2.声明一个文件管理对象</span><br><span class="line">    NSFileManager * fileManager = [NSFileManager defaultManager];</span><br><span class="line">    //3.在 SDImageCache 的getSize 方法里面我们看到调用了一个方法  NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];所以我们也模仿他去做</span><br><span class="line">    NSDictionary * attrs = [fileManager attributesOfItemAtPath:directorPath error:nil];</span><br><span class="line">    //4.最后获取size</span><br><span class="line">    NSUInteger size = [attrs fileSize];</span><br><span class="line">    NXLog(@&quot;custom----size:%lu&quot;,(unsigned long)size);</span><br><span class="line"></span><br><span class="line">    //打印结果如下</span><br><span class="line">    // 2017-02-06 23:47:01.843 BaiSi[44442:1317486] custom----size:136</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到最后的结果和SD差了相当多，初步判断这个可能不可以获取文件夹的大小，智能或许文件的大小，为了验证，我们拼接一个文件的路径，在上面第一步获取路径下面再加上一个image 的路径，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NSString * imagePath = [directorPath stringByAppendingPathComponent:@&quot;com.hackemist.SDWebImageCache.default/aa96232fe024aeba562815618fd5e02a.jpg&quot;];</span><br><span class="line">第三步里的directorPath  改成  imagePath ,运行</span><br><span class="line"></span><br><span class="line">//打印结果如下：</span><br><span class="line">2017-02-07 00:00:04.244 BaiSi[44688:1326243] custom----size:169817</span><br></pre></td></tr></table></figure></p>
+<p>我们直接通过查看图片属性结果如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/972822-325c1217fd73bda4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>和我们得到的结果一模一样，说明该属性方法只是获取文件的大小，所以我们需要遍历目的文件夹下的所有文件，将大小累加起来，就是该文件夹的总大小。<br>在SD 的 getSize 方法里面我们可以看到他调用的是 <code>NSDirectoryEnumerator *fileEnumerator = [_fileManager enumeratorAtPath:self.diskCachePath];</code>方法，然后去遍历<code>fileEnumerator</code>。这里我们可以用另一个属性<code>subpathsAtPath:directorPath</code>，改写<code>clearCach</code>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">- (void)clearCach&#123;</span><br><span class="line">    //1.先获取cache 目录的路径</span><br><span class="line">    NSString * cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];</span><br><span class="line">    // 这里先以获取 default  文件夹大小做实验，看看是否和 SDImageCache 获取的一样</span><br><span class="line">    NSString * directorPath = [cachePath stringByAppendingPathComponent:@&quot;default&quot;];</span><br><span class="line"></span><br><span class="line">    //2.声明一个文件管理对象</span><br><span class="line">    NSFileManager * fileManager = [NSFileManager defaultManager];</span><br><span class="line">    //3.在 SDImageCache 的getSize 方法里面我们看到调用了一个方法  NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];所以我们也模仿他去做</span><br><span class="line"></span><br><span class="line">    //这个可以获取所有的子文件及子文件下的文件</span><br><span class="line">    NSArray * subPaths = [fileManager subpathsAtPath:directorPath];</span><br><span class="line">    NXLog(@&quot;subPaths:%@&quot;,subPaths);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    NSDictionary * attrs = [fileManager attributesOfItemAtPath:directorPath error:nil];</span><br><span class="line">    //4.最后获取size</span><br><span class="line">    NSUInteger size = [attrs fileSize];</span><br><span class="line">    NXLog(@&quot;custom----size:%lu&quot;,(unsigned long)size);</span><br><span class="line"></span><br><span class="line">    //打印结果如下</span><br><span class="line">    // 2017-02-06 23:47:01.843 BaiSi[44442:1317486] custom----size:136</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>打印结果：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/972822-f377bd54afa6389e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>可以看到 这个方法获取到了default  文件夹下的子文件夹及子文件夹下的文件以及隐藏文件.接下来我们继续修改clearCach 方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">- (void)clearCach&#123;</span><br><span class="line">    //1.先获取cache 目录的路径</span><br><span class="line">    NSString * cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];</span><br><span class="line">    // 这里先以获取 default  文件夹大小做实验，看看是否和 SDImageCache 获取的一样</span><br><span class="line">    NSString * directorPath = [cachePath stringByAppendingPathComponent:@&quot;default&quot;];</span><br><span class="line"></span><br><span class="line">    //2.声明一个文件管理对象</span><br><span class="line">    NSFileManager * fileManager = [NSFileManager defaultManager];</span><br><span class="line">    //3.在 SDImageCache 的getSize 方法里面我们看到调用了一个方法  NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];所以我们也模仿他去做</span><br><span class="line"></span><br><span class="line">    //这个可以获取所有的子文件及子文件下的文件</span><br><span class="line">    NSArray * subPaths = [fileManager subpathsAtPath:directorPath];</span><br><span class="line">    NSUInteger totoalSize = 0 ;</span><br><span class="line">    for (NSString * path in subPaths) &#123;</span><br><span class="line">        NSString * filePath = [directorPath stringByAppendingPathComponent:path];</span><br><span class="line"></span><br><span class="line">        NSDictionary * attrs = [fileManager attributesOfItemAtPath:filePath error:nil];</span><br><span class="line">        //4.最后获取size</span><br><span class="line">        totoalSize += [attrs fileSize];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    NXLog(@&quot;custom----size:%lu&quot;,(unsigned long)totoalSize);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最终打印结果如下</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/972822-811e023926c561a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>基本上和SD 自己获取的大小差不多，这里比SD  的大是因为这里没有排除隐藏文件.DS_Store和下面那个default 文件夹,接下来对这两个文件进行排除：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">- (void)clearCach&#123;</span><br><span class="line">    //1.先获取cache 目录的路径</span><br><span class="line">    NSString * cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];</span><br><span class="line">    // 这里先以获取 default  文件夹大小做实验，看看是否和 SDImageCache 获取的一样</span><br><span class="line">    NSString * directorPath = [cachePath stringByAppendingPathComponent:@&quot;default&quot;];</span><br><span class="line"></span><br><span class="line">    //2.声明一个文件管理对象</span><br><span class="line">    NSFileManager * fileManager = [NSFileManager defaultManager];</span><br><span class="line">    //3.在 SDImageCache 的getSize 方法里面我们看到调用了一个方法  NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];所以我们也模仿他去做</span><br><span class="line"></span><br><span class="line">    //这个可以获取所有的子文件及子文件下的文件</span><br><span class="line">    NSArray * subPaths = [fileManager subpathsAtPath:directorPath];</span><br><span class="line">    NSUInteger totoalSize = 0 ;</span><br><span class="line">    for (NSString * path in subPaths) &#123;</span><br><span class="line">        NSString * filePath = [directorPath stringByAppendingPathComponent:path];</span><br><span class="line"></span><br><span class="line">        //判断是否是隐藏文件</span><br><span class="line">        if ([filePath containsString:@&quot;.DS&quot;]) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        //判断是否是文件夹</span><br><span class="line">        BOOL isDirector;</span><br><span class="line">        BOOL fileExist = [fileManager fileExistsAtPath:filePath isDirectory:&amp;isDirector];</span><br><span class="line">        if (!fileExist || isDirector) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        NSDictionary * attrs = [fileManager attributesOfItemAtPath:filePath error:nil];</span><br><span class="line">        //4.最后获取size</span><br><span class="line">        totoalSize += [attrs fileSize];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    NXLog(@&quot;custom----size:%lu&quot;,(unsigned long)totoalSize);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个时候得到的结果就和SD 的一样了。<br>上面的结果基本上已经可以满足功能了，不过为了复用性，还得进行一些修改，最好是能传入一个文件夹的路径然后获取大小，这里吧方法名改了一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">- (NSUInteger)getFileSize:(NSString *)directorPath&#123;</span><br><span class="line"></span><br><span class="line">    //2.声明一个文件管理对象</span><br><span class="line">    NSFileManager * fileManager = [NSFileManager defaultManager];</span><br><span class="line">    //3.在 SDImageCache 的getSize 方法里面我们看到调用了一个方法  NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];所以我们也模仿他去做</span><br><span class="line"></span><br><span class="line">    //这个可以获取所有的子文件及子文件下的文件</span><br><span class="line">    NSArray * subPaths = [fileManager subpathsAtPath:directorPath];</span><br><span class="line">    NSUInteger totoalSize = 0 ;</span><br><span class="line">    for (NSString * path in subPaths) &#123;</span><br><span class="line">        NSString * filePath = [directorPath stringByAppendingPathComponent:path];</span><br><span class="line"></span><br><span class="line">        //判断是否是隐藏文件</span><br><span class="line">        if ([filePath containsString:@&quot;.DS&quot;]) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        //判断是否是文件夹</span><br><span class="line">        BOOL isDirector;</span><br><span class="line">        BOOL fileExist = [fileManager fileExistsAtPath:filePath isDirectory:&amp;isDirector];</span><br><span class="line">        if (!fileExist || isDirector) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        NSDictionary * attrs = [fileManager attributesOfItemAtPath:filePath error:nil];</span><br><span class="line">        //4.最后获取size</span><br><span class="line">        totoalSize += [attrs fileSize];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    NXLog(@&quot;custom----size:%lu&quot;,(unsigned long)totoalSize);</span><br><span class="line">    return  totoalSize;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 然后在调用的地方如下就可以了：</span><br><span class="line"></span><br><span class="line"> //1.先获取cache 目录的路径</span><br><span class="line">    NSString * cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];</span><br><span class="line">    // 这里先以获取 default  文件夹大小做实验，看看是否和 SDImageCache 获取的一样</span><br><span class="line">    NSString * directorPath = [cachePath stringByAppendingPathComponent:@&quot;default&quot;];</span><br><span class="line"></span><br><span class="line"> [self getFileSize:directorPath];</span><br></pre></td></tr></table></figure></p>
+<p>上面的结果已经基本满足功能了。但是如果是遇到一个很大的文件夹的话，该操作可能会造成卡线程，所以最好能放到异步线程里去操作。由于是异步操作，这里就不适合用return 来返回结果了，可以用block的形式来传结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">- (void)getFileSize:(NSString *)directorPath completion:(void(^)(NSUInteger totoalSize))completion&#123;</span><br><span class="line"></span><br><span class="line">    //2.声明一个文件管理对象</span><br><span class="line">    NSFileManager * fileManager = [NSFileManager defaultManager];</span><br><span class="line">    //3.在 SDImageCache 的getSize 方法里面我们看到调用了一个方法  NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];所以我们也模仿他去做</span><br><span class="line"></span><br><span class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">        //这个可以获取所有的子文件及子文件下的文件</span><br><span class="line">        NSArray * subPaths = [fileManager subpathsAtPath:directorPath];</span><br><span class="line">        NSUInteger totoalSize = 0 ;</span><br><span class="line">        for (NSString * path in subPaths) &#123;</span><br><span class="line">            NSString * filePath = [directorPath stringByAppendingPathComponent:path];</span><br><span class="line"></span><br><span class="line">            //判断是否是隐藏文件</span><br><span class="line">            if ([filePath containsString:@&quot;.DS&quot;]) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            //判断是否是文件夹</span><br><span class="line">            BOOL isDirector;</span><br><span class="line">            BOOL fileExist = [fileManager fileExistsAtPath:filePath isDirectory:&amp;isDirector];</span><br><span class="line">            if (!fileExist || isDirector) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            NSDictionary * attrs = [fileManager attributesOfItemAtPath:filePath error:nil];</span><br><span class="line">            //4.最后获取size</span><br><span class="line">            totoalSize += [attrs fileSize];</span><br><span class="line">        &#125;</span><br><span class="line">        //完成之后回调</span><br><span class="line">        //这里需要在主线程去回调。不然接收不到值。这里可以用同步操作，不会太耗时</span><br><span class="line">        dispatch_sync(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            if (completion) &#123;</span><br><span class="line">                completion(totoalSize);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>到这一步已经可以完成了。不过我们还可以在完善一点，因为我们永远无法想象用户会做什么操作。同样我们将这样的方法丢给同事去调用，也无法去想象他们会传一些什么稀奇古怪的参数，比如，他直接给你传个文件的路径而不是文件夹，所以我们还得加一些异常处理，比如抛异常，就像苹果经常干的那样。<br>最终我们修改后的方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">- (void)getFileSize:(NSString *)directorPath completion:(void(^)(NSUInteger totoalSize))completion&#123;</span><br><span class="line"></span><br><span class="line">    //2.声明一个文件管理对象</span><br><span class="line">    NSFileManager * fileManager = [NSFileManager defaultManager];</span><br><span class="line"></span><br><span class="line">    // 在这里做一些异常的处理</span><br><span class="line">    //判断是否是文件夹</span><br><span class="line">    BOOL isDirector;</span><br><span class="line">    BOOL fileExist = [fileManager fileExistsAtPath:directorPath isDirectory:&amp;isDirector];</span><br><span class="line">    if (!fileExist || !isDirector) &#123;</span><br><span class="line">       NSException * exception = [NSException exceptionWithName:@&quot;PathError&quot; reason:@&quot;hey,man,这里需要的是一个文件夹的路径，并且是存在的&quot; userInfo:nil];</span><br><span class="line">        [exception raise];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //3.在 SDImageCache 的getSize 方法里面我们看到调用了一个方法  NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];所以我们也模仿他去做</span><br><span class="line"></span><br><span class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">        //这个可以获取所有的子文件及子文件下的文件</span><br><span class="line">        NSArray * subPaths = [fileManager subpathsAtPath:directorPath];</span><br><span class="line">        NSUInteger totoalSize = 0 ;</span><br><span class="line">        for (NSString * path in subPaths) &#123;</span><br><span class="line">            NSString * filePath = [directorPath stringByAppendingPathComponent:path];</span><br><span class="line"></span><br><span class="line">            //判断是否是隐藏文件</span><br><span class="line">            if ([filePath containsString:@&quot;.DS&quot;]) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            //判断是否是文件夹</span><br><span class="line">            BOOL isDirector;</span><br><span class="line">            BOOL fileExist = [fileManager fileExistsAtPath:filePath isDirectory:&amp;isDirector];</span><br><span class="line">            if (!fileExist || isDirector) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            NSDictionary * attrs = [fileManager attributesOfItemAtPath:filePath error:nil];</span><br><span class="line">            //4.最后获取size</span><br><span class="line">            totoalSize += [attrs fileSize];</span><br><span class="line">        &#125;</span><br><span class="line">        //完成之后回调</span><br><span class="line">        //这里需要在主线程去回调。不然接收不到值。这里可以用同步操作，不会太耗时</span><br><span class="line">        dispatch_sync(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            if (completion) &#123;</span><br><span class="line">                completion(totoalSize);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在调用的时候传入一个错误的地址，正如我们所料，Xcode崩了，在控制台出来结果如下：<br><img src="http://upload-images.jianshu.io/upload_images/972822-98f810968b0b9fed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>OK，可以收工了。</p>
+<p>#清除缓存</p>
+<blockquote>
+<p>清楚缓存相对比较简单，直接贴代码吧:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)removeFiles:(NSString *)directorPath&#123;</span><br><span class="line">     NSFileManager * manager = [NSFileManager defaultManager];</span><br><span class="line">    //这个方法是获取该文件下的所有子文件夹，不会获取子文件夹里的文件(这里没必要了，直接删除文件夹就可以)</span><br><span class="line">    NSArray * subDirectors = [manager contentsOfDirectoryAtPath:directorPath error:nil];</span><br><span class="line">    for (NSString * path in subDirectors) &#123;</span><br><span class="line">        NSString * filePath = [directorPath stringByAppendingPathComponent:path];</span><br><span class="line">        //删除文件夹</span><br><span class="line">        [manager removeItemAtPath:filePath error:nil];</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+
+  
+
+  
+  <div class="post-reward">
+    <div id="reward-button">请杯咖啡呗~</div>
+    <div id="qr">
+      <div class="wrap">
+          
+          <div class="bg-wrap">
+            <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+            支付宝
+          </div>
+          
+          
+          <div class="bg-wrap">
+              <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+            微信
+          </div>
+          
+      </div>
+    </div>
+    
+
+  </div>
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="http://yoursite.com">MRNAN</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="http://yoursite.com/2017/02/07/清除缓存/">http://yoursite.com/2017/02/07/清除缓存/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="http://yoursite.com">MRNAN</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+</article>
+        </div>
+        <footer>
+          <div class="copyright">
+            ©2019 <a href="http://yoursite.com">MRNAN</a>. Powered by Hexo &
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+      <div id="card-wrap">
+        <div class="card">
+          <div class="logo-widget">
+            <div class="author">
+              Utone
+            </div>
+            <div class="logo" style="background-image: url('/images/logo.jpeg')"></div>
+          </div>
+          <div class="locate-widget">
+            <div class="city-wrap">
+              <span class="iconfont icon-dangdi"></span>
+              <span id="city-name"></span>
+            </div>
+            <div class="weather-wrap">
+              <div id="weather-img">
+                <svg class="icon weather" aria-hidden="true">
+                  <use xlink:href="#icon-qingjiafeng"/>
+                </svg>
+              </div>
+              <div id="weather-detail"></div>
+            </div>
+          </div>
+          <div class="follow-widget">
+            
+            <a href="https://github.com/shixiaohu2206" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://www.facebook.com/shi.xiaohu.5" target="_block">
+              <span class="iconfont icon-facebook"></span>
+            </a>
+            
+            <a href="https://www.instagram.com/shi_xiaohu/" target="_block">
+              <span class="iconfont icon-instagram"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+            
+          <div class="category-widget">
+            <div class="title">
+              <span>Categories</span>
+              <span><a href="/archives">···</a></span>
+            </div>
+            <div class="list">
+              <ul>
+                 
+                <li>
+                  <a href="/categories/前端/">
+                    前端
+                  </a>
+                </li>
+                  
+                <li>
+                  <a href="/categories/iOS/">
+                    iOS
+                  </a>
+                </li>
+                  
+                <li>
+                  <a href="/categories/git/">
+                    git
+                  </a>
+                </li>
+                  
+                <li>
+                  <a href="/categories/hexo/">
+                    hexo
+                  </a>
+                </li>
+                  
+                <li>
+                  <a href="/categories/小程序/">
+                    小程序
+                  </a>
+                </li>
+                 
+              </ul>
+            </div>
+          </div>
+          <div class="tag-widget">
+            <div class="title">
+              <span>Tag Cloud</span>
+              <span><a href>···</a></span>
+            </div>
+            <div class="tag-cloud">
+              <a href="/tags/git/" style="font-size: 13px; color: #4a4a4a">git</a> <a href="/tags/hexo/" style="font-size: 13px; color: #4a4a4a">hexo</a> <a href="/tags/iOS/" style="font-size: 20px; color: #4a4a4a">iOS</a> <a href="/tags/前端/" style="font-size: 16.5px; color: #4a4a4a">前端</a> <a href="/tags/小程序/" style="font-size: 13px; color: #4a4a4a">小程序</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+  window.THEME_CONFIG = JSON.parse('{"title":"MRNAN","subtitle":"个人博客","description":"世界那么污，我想去看看。。。","author":"MRNAN","language":"zh-Hans","timezone":null,"url":"http://yoursite.com","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"huhu","deploy":{"type":"git","repo":{"github":"git@github.com:Nsir15/Nsir15.github.io.git","oschina":"https://gitee.com/Nsir/Nsir.oschina.io.git"}},"ignore":[],"search":{"path":"search.xml","field":"post","format":"html","limit":10000},"index_generator":{"per_page":10,"order_by":"-date","path":""},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":10},"tag_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"menu":{"home":"/","archives":"/archives","about":"/about"},"logo":"/images/logo.png","categories_max":5,"tags_max":10,"favicon":"/images/favicon.ico","site_search":true,"rss":"/atom.xml","follow":{"github":"https://github.com/shixiaohu2206","facebook":"https://www.facebook.com/shi.xiaohu.5","instagram":"https://www.instagram.com/shi_xiaohu/"},"search_url":"/search.xml","site_icp":"","site_friends":{"房间里的小猫咪":"http://baidu.com"},"busuanzi":true,"share":["weibo","weixin","qqkongjian","QQ","douban","facebook","twitter","google"],"cdn_module":{"av_min":"https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min","jquery":"https://cdn.bootcss.com/jquery/3.4.1/jquery.min","busuanzi":"//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini","confirm":"https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min","fancybox":"https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"},"baidu_push":true,"reward":{"weixin":"images/weixin.png","zhifubao":"images/zhifubao.png"}}')
+  window.loadJs = function(d, m, a) {
+    var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+    var b = document.createElement('script')
+    b.defer = true
+    b.setAttribute('type', 'text/javascript')
+    b.setAttribute('charset', 'UTF-8')
+    b.setAttribute('async', 'true')
+    b.setAttribute('src', d)
+    m && b.setAttribute('data-main', '/scripts/app')
+    if (typeof a === 'function') {
+      if (window.attachEvent) {
+        b.onreadystatechange = function() {
+          var e = b.readyState
+          if (e === 'loaded' || e === 'complete') {
+            b.onreadystatechange = null
+            a()
+          }
+        }
+      } else {
+        b.onload = a
+      }
+    }
+    c.appendChild(b)
+  }
+  loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {
+    require.config({
+      paths: {
+        // site
+        share: 'share',
+        iconfont: 'iconfont',
+        hodgepodge: 'hodgepodge',
+        valine: ['cdn/Valine.min'],
+
+        // cdn
+        av: ['https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min', 'cdn/av-min'],
+        jquery: ['https://cdn.bootcss.com/jquery/3.4.1/jquery.min', 'cdn/jquery.min'],
+        busuanzi: ['//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini', 'cdn/busuanzi.pure.mini'],
+        confirm: ['https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min', 'cdn/jquery.confirm.min'],
+        fancybox: ['https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min', 'cdn/jquery.fancybox.min']
+      },
+
+      map: {
+        '*': {
+          // css: '/scripts/cdn/css-min.js'
+          css: 'https://cdn.bootcss.com/require-css/0.1.10/css.min.js'
+        }
+      },
+
+      shim: {
+        fancybox: {
+          // deps: ['css!../style/fancybox']
+          deps: ['css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css']
+        },
+        confirm: {
+          // deps: ['css!../style/confirm']
+          deps: ['css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css']
+        }
+      },
+
+      // 加载超时
+      waitSeconds: 3
+    })
+  })
+</script>
+
+<script>
+  ;(function() {
+    var bp = document.createElement('script')
+    var curProtocol = window.location.protocol.split(':')[0]
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+    }
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(bp, s)
+  })()
+</script>
+

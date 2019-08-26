@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    
+    <meta charset="utf-8">
+    <meta name="baidu-site-verification" content="vvVgSQUzPU">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content>
+    
+    <meta name="description" content="世界那么污，我想去看看。。。">
+    <title>MRNAN - 个人博客</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/style/style.css">
+  </head>
+  <body>
+    <div id="fixed-menu">
+      <span class="iconfont icon-arrowup"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="head">
+      
+      <a href="/" class>
+        Home
+      </a>
+      
+      <a href="/archives" class>
+        Archives
+      </a>
+      
+      <a href="/about" class>
+        About
+      </a>
+      
+    </div>
+    <div id="container">
+      <div id="main">
+        <div class="navbar">
+          <div class="toggle">
+            <span class="iconfont icon-menu toggle-icon"></span>
+          </div>
+          <div class="search">
+            <div class="input-warp">
+              <span class="iconfont icon-sousuo"></span>
+              <input type="text" name id placeholder="Search Keys">
+            </div>
+          </div>
+        </div>
+        <div class="content">
+          <article class="post-entry">
+    <div class="header">
+      <div class="title">test</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2017/07/12</span>
+        </span>
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+            </span>
+          </span>
+         
+        <span class="item leancloud-visitors" id="http://yoursite.com/2017/07/12/test/" data-flag-title="test">
+          <span class="iconfont icon-eye1"></span>
+          <span class="leancloud-visitors-count"></span>
+        </span>
+      </div>
+      <div>
+      </div>
+    </div>
+    <h6 id="note"><a href="#note" class="headerlink" title="note:"></a>note:</h6><blockquote>
+<p><code>Atom MarkDown文件编辑快捷键：contorl + shift + M 进入预览模式</code></p>
+</blockquote>
+<a id="more"></a>
+<ul>
+<li><h6 id="父目录"><a href="#父目录" class="headerlink" title="父目录"></a>父目录</h6><ul>
+<li>####### 我是子目录<ul>
+<li>我是孙子目录</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="删除本地索引库文件"><a href="#删除本地索引库文件" class="headerlink" title="删除本地索引库文件"></a>删除本地索引库文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo remove xxxlib</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>有时候想要改变本地的索引库名称，可以用这个删除掉之前的，然后<code>通过 pod repo add newName git地址</code>来设置新的名称。</p>
+</blockquote>
+<!--  more-->
+<h4 id="事件响应链"><a href="#事件响应链" class="headerlink" title="事件响应链"></a>事件响应链</h4><blockquote>
+<ul>
+<li><h6 id="寻找最合适的view"><a href="#寻找最合适的view" class="headerlink" title="寻找最合适的view"></a>寻找最合适的view</h6><ul>
+<li>####### 我是子目录<ul>
+<li>我是孙子目录</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h6 id="当一个事件传递给view-的时候会调用"><a href="#当一个事件传递给view-的时候会调用" class="headerlink" title="当一个事件传递给view 的时候会调用"></a>当一个事件传递给view 的时候会调用</h6></li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (UIView *)hitTest:(CGPOint)point withEvent:(UIEvent *)event;</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<ul>
+<li><h6 id="判断当前点在不在调用的view-的身上。"><a href="#判断当前点在不在调用的view-的身上。" class="headerlink" title="判断当前点在不在调用的view 的身上。"></a>判断当前点在不在调用的view 的身上。</h6></li>
+<li><h6 id="他是在hitTest方法中调用的。"><a href="#他是在hitTest方法中调用的。" class="headerlink" title="他是在hitTest方法中调用的。"></a>他是在hitTest方法中调用的。</h6></li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)pointInsid:(CGPOint)point withEvent:(UIEvent *)event;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h6 id="1-先去判断当前的View-是不是控制器的View-如果当前的View是控制器的View，那么，它的上一个响应链就是它所在的控制器"><a href="#1-先去判断当前的View-是不是控制器的View-如果当前的View是控制器的View，那么，它的上一个响应链就是它所在的控制器" class="headerlink" title="1.先去判断当前的View 是不是控制器的View,如果当前的View是控制器的View，那么，它的上一个响应链就是它所在的控制器"></a>1.先去判断当前的View 是不是控制器的View,如果当前的View是控制器的View，那么，它的上一个响应链就是它所在的控制器</h6></li>
+<li><h6 id="2-如果当前View-不是控制器的View-那么父控件就是上一个响应链。"><a href="#2-如果当前View-不是控制器的View-那么父控件就是上一个响应链。" class="headerlink" title="2.如果当前View 不是控制器的View ,那么父控件就是上一个响应链。"></a>2.如果当前View 不是控制器的View ,那么父控件就是上一个响应链。</h6></li>
+</ul>
+<h3 id="pragma-mark-C语言"><a href="#pragma-mark-C语言" class="headerlink" title="#pragma mark - C语言"></a>#pragma mark - C语言</h3><h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><h5 id="动态内存分配"><a href="#动态内存分配" class="headerlink" title="动态内存分配"></a>动态内存分配</h5><p>数组的缺点：</p>
+<ul>
+<li><h5 id="数组长度必须事先制定，且只能是常整数，不能是变量。"><a href="#数组长度必须事先制定，且只能是常整数，不能是变量。" class="headerlink" title="数组长度必须事先制定，且只能是常整数，不能是变量。"></a>数组长度必须事先制定，且只能是常整数，不能是变量。</h5><ul>
+<li><h6 id="🌰"><a href="#🌰" class="headerlink" title="🌰"></a>🌰</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a[5] = &#123;1,2,3,4,5&#125;;  // 正确</span><br><span class="line">int length = 5; a[length];  // error</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h5 id="传统形式定义的数组，程序员无法手动释放该数组的内存。在一个函数运行期间，该函数为该数组分配的空间会一直存在，直到该函数运行完毕，数组的空间才会被释放。"><a href="#传统形式定义的数组，程序员无法手动释放该数组的内存。在一个函数运行期间，该函数为该数组分配的空间会一直存在，直到该函数运行完毕，数组的空间才会被释放。" class="headerlink" title="传统形式定义的数组，程序员无法手动释放该数组的内存。在一个函数运行期间，该函数为该数组分配的空间会一直存在，直到该函数运行完毕，数组的空间才会被释放。"></a>传统形式定义的数组，程序员无法手动释放该数组的内存。在一个函数运行期间，该函数为该数组分配的空间会一直存在，直到该函数运行完毕，数组的空间才会被释放。</h5></li>
+<li><h5 id="数组的长度不能在函数运行的过程中动态的扩充和缩小。"><a href="#数组的长度不能在函数运行的过程中动态的扩充和缩小。" class="headerlink" title="数组的长度不能在函数运行的过程中动态的扩充和缩小。"></a>数组的长度不能在函数运行的过程中动态的扩充和缩小。</h5></li>
+</ul>
+
+
+  
+
+  
+  <div class="post-reward">
+    <div id="reward-button">请杯咖啡呗~</div>
+    <div id="qr">
+      <div class="wrap">
+          
+          <div class="bg-wrap">
+            <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+            支付宝
+          </div>
+          
+          
+          <div class="bg-wrap">
+              <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+            微信
+          </div>
+          
+      </div>
+    </div>
+    
+
+  </div>
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="http://yoursite.com">MRNAN</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="http://yoursite.com/2017/07/12/test/">http://yoursite.com/2017/07/12/test/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="http://yoursite.com">MRNAN</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+</article>
+        </div>
+        <footer>
+          <div class="copyright">
+            ©2019 <a href="http://yoursite.com">MRNAN</a>. Powered by Hexo &
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+      <div id="card-wrap">
+        <div class="card">
+          <div class="logo-widget">
+            <div class="author">
+              Utone
+            </div>
+            <div class="logo" style="background-image: url('/images/logo.jpeg')"></div>
+          </div>
+          <div class="locate-widget">
+            <div class="city-wrap">
+              <span class="iconfont icon-dangdi"></span>
+              <span id="city-name"></span>
+            </div>
+            <div class="weather-wrap">
+              <div id="weather-img">
+                <svg class="icon weather" aria-hidden="true">
+                  <use xlink:href="#icon-qingjiafeng"/>
+                </svg>
+              </div>
+              <div id="weather-detail"></div>
+            </div>
+          </div>
+          <div class="follow-widget">
+            
+            <a href="https://github.com/shixiaohu2206" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://www.facebook.com/shi.xiaohu.5" target="_block">
+              <span class="iconfont icon-facebook"></span>
+            </a>
+            
+            <a href="https://www.instagram.com/shi_xiaohu/" target="_block">
+              <span class="iconfont icon-instagram"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+           
+          <div class="toc-widget">
+            <div class="title">
+              <span>Toc</span>
+            </div>
+            <div class="post-toc">
+              <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#note"><span class="toc-text">note:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#父目录"><span class="toc-text">父目录</span></a></li></ol><li class="toc-item toc-level-4"><a class="toc-link" href="#删除本地索引库文件"><span class="toc-text">删除本地索引库文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#事件响应链"><span class="toc-text">事件响应链</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#寻找最合适的view"><span class="toc-text">寻找最合适的view</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#当一个事件传递给view-的时候会调用"><span class="toc-text">当一个事件传递给view 的时候会调用</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#判断当前点在不在调用的view-的身上。"><span class="toc-text">判断当前点在不在调用的view 的身上。</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#他是在hitTest方法中调用的。"><span class="toc-text">他是在hitTest方法中调用的。</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-先去判断当前的View-是不是控制器的View-如果当前的View是控制器的View，那么，它的上一个响应链就是它所在的控制器"><span class="toc-text">1.先去判断当前的View 是不是控制器的View,如果当前的View是控制器的View，那么，它的上一个响应链就是它所在的控制器</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-如果当前View-不是控制器的View-那么父控件就是上一个响应链。"><span class="toc-text">2.如果当前View 不是控制器的View ,那么父控件就是上一个响应链。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pragma-mark-C语言"><span class="toc-text">#pragma mark - C语言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数组"><span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#动态内存分配"><span class="toc-text">动态内存分配</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#数组长度必须事先制定，且只能是常整数，不能是变量。"><span class="toc-text">数组长度必须事先制定，且只能是常整数，不能是变量。</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#🌰"><span class="toc-text">🌰</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#传统形式定义的数组，程序员无法手动释放该数组的内存。在一个函数运行期间，该函数为该数组分配的空间会一直存在，直到该函数运行完毕，数组的空间才会被释放。"><span class="toc-text">传统形式定义的数组，程序员无法手动释放该数组的内存。在一个函数运行期间，该函数为该数组分配的空间会一直存在，直到该函数运行完毕，数组的空间才会被释放。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#数组的长度不能在函数运行的过程中动态的扩充和缩小。"><span class="toc-text">数组的长度不能在函数运行的过程中动态的扩充和缩小。</span></a>
+            </li></ol></li></ol></li></div>
+          </div>
+           
+          <div class="category-widget">
+            <div class="title">
+              <span>Categories</span>
+              <span><a href="/archives">···</a></span>
+            </div>
+            <div class="list">
+              <ul>
+                 
+                <li>
+                  <a href="/categories/前端/">
+                    前端
+                  </a>
+                </li>
+                  
+                <li>
+                  <a href="/categories/iOS/">
+                    iOS
+                  </a>
+                </li>
+                  
+                <li>
+                  <a href="/categories/git/">
+                    git
+                  </a>
+                </li>
+                  
+                <li>
+                  <a href="/categories/hexo/">
+                    hexo
+                  </a>
+                </li>
+                  
+                <li>
+                  <a href="/categories/小程序/">
+                    小程序
+                  </a>
+                </li>
+                 
+              </ul>
+            </div>
+          </div>
+          <div class="tag-widget">
+            <div class="title">
+              <span>Tag Cloud</span>
+              <span><a href>···</a></span>
+            </div>
+            <div class="tag-cloud">
+              <a href="/tags/git/" style="font-size: 13px; color: #4a4a4a">git</a> <a href="/tags/hexo/" style="font-size: 13px; color: #4a4a4a">hexo</a> <a href="/tags/iOS/" style="font-size: 20px; color: #4a4a4a">iOS</a> <a href="/tags/前端/" style="font-size: 16.5px; color: #4a4a4a">前端</a> <a href="/tags/小程序/" style="font-size: 13px; color: #4a4a4a">小程序</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+  window.THEME_CONFIG = JSON.parse('{"title":"MRNAN","subtitle":"个人博客","description":"世界那么污，我想去看看。。。","author":"MRNAN","language":"zh-Hans","timezone":null,"url":"http://yoursite.com","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"huhu","deploy":{"type":"git","repo":{"github":"git@github.com:Nsir15/Nsir15.github.io.git","oschina":"https://gitee.com/Nsir/Nsir.oschina.io.git"}},"ignore":[],"search":{"path":"search.xml","field":"post","format":"html","limit":10000},"index_generator":{"per_page":10,"order_by":"-date","path":""},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":10},"tag_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"menu":{"home":"/","archives":"/archives","about":"/about"},"logo":"/images/logo.png","categories_max":5,"tags_max":10,"favicon":"/images/favicon.ico","site_search":true,"rss":"/atom.xml","follow":{"github":"https://github.com/shixiaohu2206","facebook":"https://www.facebook.com/shi.xiaohu.5","instagram":"https://www.instagram.com/shi_xiaohu/"},"search_url":"/search.xml","site_icp":"","site_friends":{"房间里的小猫咪":"http://baidu.com"},"busuanzi":true,"share":["weibo","weixin","qqkongjian","QQ","douban","facebook","twitter","google"],"cdn_module":{"av_min":"https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min","jquery":"https://cdn.bootcss.com/jquery/3.4.1/jquery.min","busuanzi":"//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini","confirm":"https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min","fancybox":"https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"},"baidu_push":true,"reward":{"weixin":"images/weixin.png","zhifubao":"images/zhifubao.png"}}')
+  window.loadJs = function(d, m, a) {
+    var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+    var b = document.createElement('script')
+    b.defer = true
+    b.setAttribute('type', 'text/javascript')
+    b.setAttribute('charset', 'UTF-8')
+    b.setAttribute('async', 'true')
+    b.setAttribute('src', d)
+    m && b.setAttribute('data-main', '/scripts/app')
+    if (typeof a === 'function') {
+      if (window.attachEvent) {
+        b.onreadystatechange = function() {
+          var e = b.readyState
+          if (e === 'loaded' || e === 'complete') {
+            b.onreadystatechange = null
+            a()
+          }
+        }
+      } else {
+        b.onload = a
+      }
+    }
+    c.appendChild(b)
+  }
+  loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {
+    require.config({
+      paths: {
+        // site
+        share: 'share',
+        iconfont: 'iconfont',
+        hodgepodge: 'hodgepodge',
+        valine: ['cdn/Valine.min'],
+
+        // cdn
+        av: ['https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min', 'cdn/av-min'],
+        jquery: ['https://cdn.bootcss.com/jquery/3.4.1/jquery.min', 'cdn/jquery.min'],
+        busuanzi: ['//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini', 'cdn/busuanzi.pure.mini'],
+        confirm: ['https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min', 'cdn/jquery.confirm.min'],
+        fancybox: ['https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min', 'cdn/jquery.fancybox.min']
+      },
+
+      map: {
+        '*': {
+          // css: '/scripts/cdn/css-min.js'
+          css: 'https://cdn.bootcss.com/require-css/0.1.10/css.min.js'
+        }
+      },
+
+      shim: {
+        fancybox: {
+          // deps: ['css!../style/fancybox']
+          deps: ['css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css']
+        },
+        confirm: {
+          // deps: ['css!../style/confirm']
+          deps: ['css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css']
+        }
+      },
+
+      // 加载超时
+      waitSeconds: 3
+    })
+  })
+</script>
+
+<script>
+  ;(function() {
+    var bp = document.createElement('script')
+    var curProtocol = window.location.protocol.split(':')[0]
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+    }
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(bp, s)
+  })()
+</script>
+
