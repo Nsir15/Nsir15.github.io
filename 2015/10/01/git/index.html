@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>git | MRNAN</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="世界那么污，我想去看看。。。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="git | MRNAN">
+    <meta name="twitter:description" content="世界那么污，我想去看看。。。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="git | MRNAN">
+    <meta property="og:description" content="世界那么污，我想去看看。。。">
+
+    
+    <meta name="author" content="MRNAN">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+
+    <link rel="canonical" href="http://yoursite.com/2015/10/01/git/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover0.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 MRNAN 的主页"><img src="/images/avatar.png" width="80" alt="MRNAN logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for MRNAN">MRNAN</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">个人博客</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">世界那么污，我想去看看。。。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/aboutme">关于我</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Nsir15" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-slate"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2015-09-30T16:00:00.000Z" class="post-list__meta--date date">2015-10-01</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/git/">git</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">git</h1>
+  </header>
+
+  <section class="post">
+    <h2 id="一、git常用操作命令"><a href="#一、git常用操作命令" class="headerlink" title="一、git常用操作命令"></a>一、git常用操作命令</h2><a id="more"></a>
+<ul>
+<li><h4 id="使用git进行版本管理"><a href="#使用git进行版本管理" class="headerlink" title="使用git进行版本管理"></a>使用git进行版本管理</h4><ul>
+<li><h5 id="进入到项目根目录"><a href="#进入到项目根目录" class="headerlink" title="进入到项目根目录"></a>进入到项目根目录</h5></li>
+<li><h5 id="git-init"><a href="#git-init" class="headerlink" title="git init"></a>git init</h5></li>
+<li><h5 id="git-add"><a href="#git-add" class="headerlink" title="git add ."></a>git add .</h5></li>
+<li><h5 id="git-commit-m-‘初始化’"><a href="#git-commit-m-‘初始化’" class="headerlink" title="git commit -m ‘初始化’"></a>git commit -m ‘初始化’</h5></li>
+</ul>
+</li>
+<li><h4 id="提交代码到远程仓库"><a href="#提交代码到远程仓库" class="headerlink" title="提交代码到远程仓库"></a>提交代码到远程仓库</h4><ul>
+<li><h5 id="创建远程代码仓库"><a href="#创建远程代码仓库" class="headerlink" title="创建远程代码仓库"></a>创建远程代码仓库</h5></li>
+<li><h5 id="添加远程仓库关联"><a href="#添加远程仓库关联" class="headerlink" title="添加远程仓库关联"></a>添加远程仓库关联</h5></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin  远程仓库地址</span><br></pre></td></tr></table></figure>
+<pre><code>* ##### 提交代码到远程仓库
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<hr>
+<h6 id="备注：关于权限"><a href="#备注：关于权限" class="headerlink" title="备注：关于权限"></a>备注：关于权限</h6><ul>
+<li><h6 id="使用用户名和密码"><a href="#使用用户名和密码" class="headerlink" title="使用用户名和密码"></a>使用用户名和密码</h6></li>
+<li><h6 id="生成公钥和私钥。"><a href="#生成公钥和私钥。" class="headerlink" title="生成公钥和私钥。"></a>生成公钥和私钥。</h6><ul>
+<li><h6 id="ssh-keygen"><a href="#ssh-keygen" class="headerlink" title="ssh-keygen"></a>ssh-keygen</h6></li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><h4 id="本地打标签备份并提交标签"><a href="#本地打标签备份并提交标签" class="headerlink" title="本地打标签备份并提交标签"></a>本地打标签备份并提交标签</h4><ul>
+<li><h5 id="git-tag"><a href="#git-tag" class="headerlink" title="git tag"></a>git tag</h5></li>
+<li><h5 id="git-push-–tags"><a href="#git-push-–tags" class="headerlink" title="git push –tags"></a>git push –tags</h5></li>
+</ul>
+</li>
+<li><h4 id="删除本地-远程标签"><a href="#删除本地-远程标签" class="headerlink" title="删除本地/远程标签"></a>删除本地/远程标签</h4><ul>
+<li><h5 id="删除本地标签"><a href="#删除本地标签" class="headerlink" title="删除本地标签"></a>删除本地标签</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -d 标签名称</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="删除远程"><a href="#删除远程" class="headerlink" title="删除远程"></a>删除远程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin : 标签名称</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、cocoapods"><a href="#二、cocoapods" class="headerlink" title="二、cocoapods"></a>二、cocoapods</h2><h3 id="1-cocoapods的基本使用"><a href="#1-cocoapods的基本使用" class="headerlink" title="1.cocoapods的基本使用"></a>1.cocoapods的基本使用</h3><ul>
+<li><h3 id="cocoapods的安装"><a href="#cocoapods的安装" class="headerlink" title="cocoapods的安装"></a>cocoapods的安装</h3><ul>
+<li><h4 id="gem"><a href="#gem" class="headerlink" title="gem"></a>gem</h4></li>
+</ul>
+</li>
+</ul>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/12/01/css/" title="CSS">CSS</a></h2>
+                <p class="excerpt">
+                
+                CSS选择器(selectors)引用.css布局:
+资料： HTML Tag: link
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-12-01T00:00:00.000Z" class="post-list__meta--date date">2016-12-01</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/前端/">前端</a>
+</span><a class="btn-border-small" href="/2016/12/01/css/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2019 - 本站使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题,
+        由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
