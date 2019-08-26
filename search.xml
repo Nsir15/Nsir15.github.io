@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[事件]]></title>
-      <url>/Blog/2019/08/23/%E4%BA%8B%E4%BB%B6/</url>
+      <url>/2019/08/23/%E4%BA%8B%E4%BB%B6/</url>
       <content type="html"><![CDATA[<p>先占位</p>
 ]]></content>
       
@@ -25,7 +25,7 @@
     
     <entry>
       <title><![CDATA[js基础知识]]></title>
-      <url>/Blog/2019/08/22/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+      <url>/2019/08/22/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
       <content type="html"><![CDATA[<p>学习是没有捷径的，所谓的捷径都会让你永远达不到巅峰；</p>
 <blockquote>
 <ol>
@@ -291,7 +291,7 @@ NaN和谁都不相等包括自己
     
     <entry>
       <title><![CDATA[CALayer position 和 anchorPoint 的问题]]></title>
-      <url>/Blog/2017/08/29/CALayer%20position%20%E5%92%8C%20anchorPoint%20%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+      <url>/2017/08/29/CALayer%20position%20%E5%92%8C%20anchorPoint%20%E7%9A%84%E9%97%AE%E9%A2%98/</url>
       <content type="html"><![CDATA[<h2 id="概要："><a href="#概要：" class="headerlink" title="概要："></a>概要：</h2><blockquote>
 <p><code>CALayer</code> 的<code>position</code>白话来讲：<code>position</code>就是layer 自身的<code>anchorPoint</code>相对于父<code>superLayer</code>的坐标位置。<br>常规说来，在iOS上，一个图层的position位于父图层的左上角<br>具体概念参考：<a href="http://kittenyang.com/anchorpoint/" target="_blank" rel="noopener">这将是你最后一次纠结position与anchorPoint</a></p>
 </blockquote>
@@ -347,7 +347,7 @@ NaN和谁都不相等包括自己
     
     <entry>
       <title><![CDATA[杂记]]></title>
-      <url>/Blog/2017/08/27/%E6%9D%82%E8%AE%B0/</url>
+      <url>/2017/08/27/%E6%9D%82%E8%AE%B0/</url>
       <content type="html"><![CDATA[<p>世界那么大，我想去看看</p>
 <a id="more"></a>
 <blockquote>
@@ -376,7 +376,7 @@ NaN和谁都不相等包括自己
     
     <entry>
       <title><![CDATA[test]]></title>
-      <url>/Blog/2017/07/12/test/</url>
+      <url>/2017/07/12/test/</url>
       <content type="html"><![CDATA[<h6 id="note"><a href="#note" class="headerlink" title="note:"></a>note:</h6><blockquote>
 <p><code>Atom MarkDown文件编辑快捷键：contorl + shift + M 进入预览模式</code></p>
 </blockquote>
@@ -438,7 +438,7 @@ NaN和谁都不相等包括自己
     
     <entry>
       <title><![CDATA[JavaScript]]></title>
-      <url>/Blog/2017/06/27/javascript/</url>
+      <url>/2017/06/27/javascript/</url>
       <content type="html"><![CDATA[<h1 id="JavaScript基础"><a href="#JavaScript基础" class="headerlink" title="JavaScript基础"></a>JavaScript基础</h1><blockquote>
 <p>1.JavaScript 包含:<code>ECMA</code>,<code>DOM</code>和<code>BOM</code>。<br>2.JavaScript 的基础类型有<em><strong>number</strong></em>,<strong><em>string</em></strong>和<strong><em>boolean</em></strong> (<strong>这些都是小写</strong>)。<br>3.JavaScript的复合类型有<code>Number</code>,<code>Array</code>,<code>Date</code>,<code>String</code>,<code>Boolean</code>,<code>RegExp</code>,<code>Math</code>,还有两个核心类型<code>Object</code>和<code>Function</code>。<br>4.JavaScript</p>
 </blockquote>
@@ -454,7 +454,7 @@ NaN和谁都不相等包括自己
     
     <entry>
       <title><![CDATA[工作中的坑]]></title>
-      <url>/Blog/2017/04/01/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E5%9D%91/</url>
+      <url>/2017/04/01/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E5%9D%91/</url>
       <content type="html"><![CDATA[<h5 id="1-通过xib加载的控件在viewDidLoad-中重新计算布局不准确的问题"><a href="#1-通过xib加载的控件在viewDidLoad-中重新计算布局不准确的问题" class="headerlink" title="1.通过xib加载的控件在viewDidLoad 中重新计算布局不准确的问题"></a>1.通过xib加载的控件在viewDidLoad 中重新计算布局不准确的问题</h5><p>在爱山门<code>实时上门</code>模块，由于之前没有加网络提示器或者没网的空白页之类的，在网络情况差的情况下，直接就是一个空白页放在那里，用户体验特别不好，所以这里需要加上一个网络的提示器在加载的时候进行弹窗提示用户，记载成功的话就直接显示数据，失败的话就提示网络问题。这个直接用SVProgress就可以。由于这里的界面布局比较固定，所以最好可以再做一个本地缓存，利用FMDB将上一次的数据存到本地，下次打开的话先从数据库去获取数据，没有的话再去网络请求。这里遇到了一个问题，折腾了大半个上午。就是每次通过本地缓存去加载数据的时候滑动范围总是不准，在viewDidLoad中已经计算好了scrollView 的高度和tableView 的高度，但是在viewDidDissAppear 中再去打印的话会发现尺寸并不是我们计算的那个结果。下拉刷新或者直接去加载网络的数据的时候就没问题。后来一直调试查找猜测应该是xib 的问题，<code>因为这里的scrollView 和 tableView 都是通过xib 去加载的，通过xib 加载的文件在viewDidLoad中加载的时候并不会去布局frame ，只是拿到xib 中设置的大小属性，只有在 viewDidLayoutSubViews 里才会去根据布局去确定控件的最终尺寸(不过添加view 的操作不能放在这里，因为这个方法会调用多次)</code></p>
 <hr>
 <a id="more"></a>
@@ -498,7 +498,7 @@ NaN和谁都不相等包括自己
     
     <entry>
       <title><![CDATA[清除缓存]]></title>
-      <url>/Blog/2017/02/07/%E6%B8%85%E9%99%A4%E7%BC%93%E5%AD%98/</url>
+      <url>/2017/02/07/%E6%B8%85%E9%99%A4%E7%BC%93%E5%AD%98/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>现在的大多数APP都带有缓存功能，尤其是使用一些第三方框架，比如SDWebImage 就自带缓存功能。当用了一段时间后，缓存就会越来愈大，如果不清除的话就会影响用户体验和性能，所以大多📚APP加了清除缓存的功能。这里的主要实现思路也是根据SDWebImage 的思路去实现。这里需要用到一个 <code>simpholders</code>工具可以直接查看沙盒下的东西。</p>
 </blockquote>
@@ -552,7 +552,7 @@ NaN和谁都不相等包括自己
     
     <entry>
       <title><![CDATA[iOS 项目小知识点]]></title>
-      <url>/Blog/2017/02/05/iOS%20%E9%A1%B9%E7%9B%AE%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
+      <url>/2017/02/05/iOS%20%E9%A1%B9%E7%9B%AE%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
       <content type="html"><![CDATA[<p>[toc]</p>
 <h1 id="自定义控件"><a href="#自定义控件" class="headerlink" title="自定义控件"></a>自定义控件</h1><blockquote>
 <p>在- (instancetype)initWithFrame:(CGRect)frame<br>里自定义控件<br>在- (void)layoutSubviews  里布局控件</p>
@@ -722,7 +722,7 @@ NaN和谁都不相等包括自己
     
     <entry>
       <title><![CDATA[微信小程序]]></title>
-      <url>/Blog/2016/12/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
+      <url>/2016/12/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
       <content type="html"><![CDATA[<h2 id="快速创建页面"><a href="#快速创建页面" class="headerlink" title="快速创建页面"></a>快速创建页面</h2><p><code>操作步骤说明
 新建一个默认（HelloWorld）或者空白项目，或者打开自己的项；
 假设我们要在根目录下创建一个页面，取名为：tianxiaxue；
@@ -842,7 +842,7 @@ NaN和谁都不相等包括自己
     
     <entry>
       <title><![CDATA[CSS]]></title>
-      <url>/Blog/2016/12/01/css/</url>
+      <url>/2016/12/01/css/</url>
       <content type="html"><![CDATA[<h2 id="CSS选择器-selectors"><a href="#CSS选择器-selectors" class="headerlink" title="CSS选择器(selectors)"></a>CSS选择器(selectors)</h2><p>引用.css布局:<br><img src="/assets/445BE7FD-6066-4D86-B0E4-8BDD24100808.png" alt></p>
 <h3 id="资料：-HTML-Tag-link"><a href="#资料：-HTML-Tag-link" class="headerlink" title="资料： HTML Tag: link"></a>资料： <a href="http://htmldog.com/references/html/tags/link/" target="_blank" rel="noopener">HTML Tag: link</a></h3><a id="more"></a>
 <blockquote>
@@ -1015,7 +1015,7 @@ NaN和谁都不相等包括自己
     
     <entry>
       <title><![CDATA[git]]></title>
-      <url>/Blog/2015/10/01/git/</url>
+      <url>/2015/10/01/git/</url>
       <content type="html"><![CDATA[<h2 id="一、git常用操作命令"><a href="#一、git常用操作命令" class="headerlink" title="一、git常用操作命令"></a>一、git常用操作命令</h2><a id="more"></a>
 <ul>
 <li><h4 id="使用git进行版本管理"><a href="#使用git进行版本管理" class="headerlink" title="使用git进行版本管理"></a>使用git进行版本管理</h4><ul>
