@@ -1,96 +1,388 @@
 <!DOCTYPE html>
-<html>
-  <head><meta name="generator" content="Hexo 3.9.0">
-    
-    <meta charset="utf-8">
-    <meta name="baidu-site-verification" content="vvVgSQUzPU">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content>
-    
-    <meta name="description" content="世界那么污，我想去看看。。。">
-    <title>MRNAN - 个人博客</title>
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/style/style.css">
-  </head>
-  <body>
-    <div id="fixed-menu">
-      <span class="iconfont icon-arrowup"></span>
-    </div>
-    <div id="progress">
-      <div class="line"></div>
-    </div>
-    <div id="head">
-      
-      <a href="/" class>
-        Home
-      </a>
-      
-      <a href="/archives" class>
-        Archives
-      </a>
-      
-      <a href="/about" class>
-        About
-      </a>
-      
-    </div>
-    <div id="container">
-      <div id="main">
-        <div class="navbar">
-          <div class="toggle">
-            <span class="iconfont icon-menu toggle-icon"></span>
-          </div>
-          <div class="search">
-            <div class="input-warp">
-              <span class="iconfont icon-sousuo"></span>
-              <input type="text" name id placeholder="Search Keys">
-            </div>
-          </div>
-        </div>
-        <div class="content">
-          <article class="post-entry">
-    <div class="header">
-      <div class="title">CSS</div>
-      <div class="meta">
-        <span class="item">
-          <span class="iconfont icon-time-circle"></span>
-          <span>2016/12/01</span>
-        </span>
 
-         
-        <span class="item">
-          <span class="iconfont icon-folder"></span>
-          <span>
-              
-                
-                  <a href="/categories/前端">前端</a>
-                
-              
-          </span>
-        </span>
-        
-        
-         
-          <span class="item">
-            <span class="iconfont icon-tag1"></span>
-            <span>
-                
-                  
-                    <a href="/tags/前端">前端</a>
-                  
-                
-            </span>
-          </span>
-         
-        <span class="item leancloud-visitors" id="http://yoursite.com/2016/12/01/css/" data-flag-title="CSS">
-          <span class="iconfont icon-eye1"></span>
-          <span class="leancloud-visitors-count"></span>
-        </span>
-      </div>
-      <div>
-      </div>
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="前端,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="CSS选择器(selectors)引用.css布局: 资料： HTML Tag: link">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS">
+<meta property="og:url" content="http://yoursite.com/2016/12/01/css/index.html">
+<meta property="og:site_name" content="MRNAN">
+<meta property="og:description" content="CSS选择器(selectors)引用.css布局: 资料： HTML Tag: link">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/assets/445BE7FD-6066-4D86-B0E4-8BDD24100808.png">
+<meta property="og:updated_time" content="2017-08-30T09:08:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS">
+<meta name="twitter:description" content="CSS选择器(selectors)引用.css布局: 资料： HTML Tag: link">
+<meta name="twitter:image" content="http://yoursite.com/assets/445BE7FD-6066-4D86-B0E4-8BDD24100808.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/01/css/">
+
+
+
+
+
+  <title>CSS | MRNAN</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MRNAN</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
-    <h2 id="CSS选择器-selectors"><a href="#CSS选择器-selectors" class="headerlink" title="CSS选择器(selectors)"></a>CSS选择器(selectors)</h2><p>引用.css布局:<br><img src="/assets/445BE7FD-6066-4D86-B0E4-8BDD24100808.png" alt></p>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/01/css/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MRNAN">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MRNAN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-01T08:00:00+08:00">
+                2016-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="CSS选择器-selectors"><a href="#CSS选择器-selectors" class="headerlink" title="CSS选择器(selectors)"></a>CSS选择器(selectors)</h2><p>引用.css布局:<br><img src="/assets/445BE7FD-6066-4D86-B0E4-8BDD24100808.png" alt></p>
 <h3 id="资料：-HTML-Tag-link"><a href="#资料：-HTML-Tag-link" class="headerlink" title="资料： HTML Tag: link"></a>资料： <a href="http://htmldog.com/references/html/tags/link/" target="_blank" rel="noopener">HTML Tag: link</a></h3><a id="more"></a>
 <blockquote>
 <table>
@@ -244,240 +536,733 @@
 <p><a href="http://www.adminwang.com/css/90.html" target="_blank" rel="noopener">HTML标签元素的分类(行内标签、块级标签、行内块级标签)</a></p>
 </blockquote>
 
-
-  
-
-  
-  <div class="post-reward">
-    <div id="reward-button">请杯咖啡呗~</div>
-    <div id="qr">
-      <div class="wrap">
-          
-          <div class="bg-wrap">
-            <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
-            支付宝
-          </div>
-          
-          
-          <div class="bg-wrap">
-              <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
-            微信
-          </div>
-          
-      </div>
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/01/git/" rel="next" title="git">
+                <i class="fa fa-chevron-left"></i> git
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/14/微信小程序/" rel="prev" title="微信小程序">
+                微信小程序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="MRNAN">
+          <p class="site-author-name" itemprop="name">MRNAN</p>
+           
+              <p class="site-description motion-element" itemprop="description">世界那么污，我想去看看。。。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Nsir15" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/ef7eb6bec183" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      简书
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://gitee.com/Nsir" target="_blank" title="开源中国">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      开源中国
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS选择器-selectors"><span class="nav-number">1.</span> <span class="nav-text">CSS选择器(selectors)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#资料：-HTML-Tag-link"><span class="nav-number">1.1.</span> <span class="nav-text">资料： HTML Tag: link</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一个标签可以有多个类选择器，不同的值用空格隔开，这样多个样式便可以应用的一个标签上，如"><span class="nav-number">1.1.1.</span> <span class="nav-text">一个标签可以有多个类选择器，不同的值用空格隔开，这样多个样式便可以应用的一个标签上，如:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资料："><span class="nav-number">1.2.</span> <span class="nav-text">资料：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS选择器笔记"><span class="nav-number">1.2.1.</span> <span class="nav-text">CSS选择器笔记</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#css选择器优先级深入理解"><span class="nav-number">1.2.2.</span> <span class="nav-text">css选择器优先级深入理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-CSS选择器-小码哥的笔记"><span class="nav-number">1.2.3.</span> <span class="nav-text">10-CSS选择器(小码哥的笔记)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS属性"><span class="nav-number">2.</span> <span class="nav-text">CSS属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#margin-属性"><span class="nav-number">2.1.</span> <span class="nav-text">margin 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float"><span class="nav-number">2.2.</span> <span class="nav-text">float</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#background-size-属性"><span class="nav-number">2.3.</span> <span class="nav-text">background-size 属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS元素显示模式转换"><span class="nav-number">3.</span> <span class="nav-text">CSS元素显示模式转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何转换CSS元素的显示模式"><span class="nav-number">3.0.1.</span> <span class="nav-text">如何转换CSS元素的显示模式?</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#设置元素的display属性"><span class="nav-number">3.0.1.0.1.</span> <span class="nav-text">设置元素的display属性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#快捷键"><span class="nav-number">3.0.1.0.2.</span> <span class="nav-text">快捷键</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#块级元素和行内元素的区别"><span class="nav-number">3.0.2.</span> <span class="nav-text">块级元素和行内元素的区别?</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#块级元素"><span class="nav-number">3.0.2.0.1.</span> <span class="nav-text">块级元素</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#行内元素"><span class="nav-number">3.0.2.0.2.</span> <span class="nav-text">行内元素</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#行内块级元素"><span class="nav-number">3.0.2.0.3.</span> <span class="nav-text">行内块级元素</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#网页布局方式——定位流"><span class="nav-number">4.</span> <span class="nav-text">网页布局方式——定位流</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#绝对定位使用口诀-子绝父相"><span class="nav-number">4.0.0.0.1.</span> <span class="nav-text">绝对定位使用口诀(子绝父相)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资料-定位流-小码哥"><span class="nav-number">5.</span> <span class="nav-text">资料: 定位流(小码哥)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#所有标签想要水平居中"><span class="nav-number">5.0.1.</span> <span class="nav-text">所有标签想要水平居中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#所有标签垂直居中"><span class="nav-number">5.0.2.</span> <span class="nav-text">所有标签垂直居中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML属性"><span class="nav-number">6.</span> <span class="nav-text">HTML属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML-style-属性"><span class="nav-number">6.1.</span> <span class="nav-text">HTML style 属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flex布局属性"><span class="nav-number">7.</span> <span class="nav-text">Flex布局属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集锦："><span class="nav-number">8.</span> <span class="nav-text">集锦：</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MRNAN</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
     
 
   </div>
 
-  <div class="post-copyright">
-    <div class="auth">
-      本文作者：<a href="http://yoursite.com">MRNAN</a>
-    </div>
-    <div class="link">
-      永久链接：<a href="http://yoursite.com/2016/12/01/css/">http://yoursite.com/2016/12/01/css/</a>
-    </div>
-    <div class="declare">
-      版权声明：本文首发于<a href="http://yoursite.com">MRNAN</a>的博客，转载请注明出处！
-    </div>
-  </div>
-
-  <div id="comment"></div>
-</article>
-        </div>
-        <footer>
-          <div class="copyright">
-            ©2019 <a href="http://yoursite.com">MRNAN</a>. Powered by Hexo &
-            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu">hexo-theme-huhu</a>
-          </div>
-          
-        </footer>
-      </div>
-      <div id="card-wrap">
-        <div class="card">
-          <div class="logo-widget">
-            <div class="author">
-              Utone
-            </div>
-            <div class="logo" style="background-image: url('/images/logo.jpeg')"></div>
-          </div>
-          <div class="locate-widget">
-            <div class="city-wrap">
-              <span class="iconfont icon-dangdi"></span>
-              <span id="city-name"></span>
-            </div>
-            <div class="weather-wrap">
-              <div id="weather-img">
-                <svg class="icon weather" aria-hidden="true">
-                  <use xlink:href="#icon-qingjiafeng"/>
-                </svg>
-              </div>
-              <div id="weather-detail"></div>
-            </div>
-          </div>
-          <div class="follow-widget">
-            
-            <a href="https://github.com/shixiaohu2206" target="_block">
-              <span class="iconfont icon-github"></span>
-            </a>
-            
-            <a href="https://www.facebook.com/shi.xiaohu.5" target="_block">
-              <span class="iconfont icon-facebook"></span>
-            </a>
-            
-            <a href="https://www.instagram.com/shi_xiaohu/" target="_block">
-              <span class="iconfont icon-instagram"></span>
-            </a>
-             
-            <a href="/atom.xml" target="_block">
-              <span class="iconfont icon-rss"></span>
-            </a>
-            
-          </div>
-           
-          <div class="toc-widget">
-            <div class="title">
-              <span>Toc</span>
-            </div>
-            <div class="post-toc">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS选择器-selectors"><span class="toc-text">CSS选择器(selectors)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#资料：-HTML-Tag-link"><span class="toc-text">资料： HTML Tag: link</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一个标签可以有多个类选择器，不同的值用空格隔开，这样多个样式便可以应用的一个标签上，如"><span class="toc-text">一个标签可以有多个类选择器，不同的值用空格隔开，这样多个样式便可以应用的一个标签上，如:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资料："><span class="toc-text">资料：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS选择器笔记"><span class="toc-text">CSS选择器笔记</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#css选择器优先级深入理解"><span class="toc-text">css选择器优先级深入理解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-CSS选择器-小码哥的笔记"><span class="toc-text">10-CSS选择器(小码哥的笔记)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS属性"><span class="toc-text">CSS属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#margin-属性"><span class="toc-text">margin 属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#float"><span class="toc-text">float</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#background-size-属性"><span class="toc-text">background-size 属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS元素显示模式转换"><span class="toc-text">CSS元素显示模式转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#如何转换CSS元素的显示模式"><span class="toc-text">如何转换CSS元素的显示模式?</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#设置元素的display属性"><span class="toc-text">设置元素的display属性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#快捷键"><span class="toc-text">快捷键</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#块级元素和行内元素的区别"><span class="toc-text">块级元素和行内元素的区别?</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#块级元素"><span class="toc-text">块级元素</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#行内元素"><span class="toc-text">行内元素</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#行内块级元素"><span class="toc-text">行内块级元素</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#网页布局方式——定位流"><span class="toc-text">网页布局方式——定位流</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#绝对定位使用口诀-子绝父相"><span class="toc-text">绝对定位使用口诀(子绝父相)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#资料-定位流-小码哥"><span class="toc-text">资料: 定位流(小码哥)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#所有标签想要水平居中"><span class="toc-text">所有标签想要水平居中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#所有标签垂直居中"><span class="toc-text">所有标签垂直居中</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML属性"><span class="toc-text">HTML属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML-style-属性"><span class="toc-text">HTML style 属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex布局属性"><span class="toc-text">Flex布局属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集锦："><span class="toc-text">集锦：</span></a></li>
-            </div>
-          </div>
-           
-          <div class="category-widget">
-            <div class="title">
-              <span>Categories</span>
-              <span><a href="/archives">···</a></span>
-            </div>
-            <div class="list">
-              <ul>
-                 
-                <li>
-                  <a href="/categories/前端/">
-                    前端
-                  </a>
-                </li>
-                  
-                <li>
-                  <a href="/categories/iOS/">
-                    iOS
-                  </a>
-                </li>
-                  
-                <li>
-                  <a href="/categories/git/">
-                    git
-                  </a>
-                </li>
-                  
-                <li>
-                  <a href="/categories/hexo/">
-                    hexo
-                  </a>
-                </li>
-                  
-                <li>
-                  <a href="/categories/小程序/">
-                    小程序
-                  </a>
-                </li>
-                 
-              </ul>
-            </div>
-          </div>
-          <div class="tag-widget">
-            <div class="title">
-              <span>Tag Cloud</span>
-              <span><a href>···</a></span>
-            </div>
-            <div class="tag-cloud">
-              <a href="/tags/git/" style="font-size: 13px; color: #4a4a4a">git</a> <a href="/tags/hexo/" style="font-size: 13px; color: #4a4a4a">hexo</a> <a href="/tags/iOS/" style="font-size: 20px; color: #4a4a4a">iOS</a> <a href="/tags/前端/" style="font-size: 16.5px; color: #4a4a4a">前端</a> <a href="/tags/小程序/" style="font-size: 13px; color: #4a4a4a">小程序</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
   
-</html>
+
 <script type="text/javascript">
-  window.THEME_CONFIG = JSON.parse('{"title":"MRNAN","subtitle":"个人博客","description":"世界那么污，我想去看看。。。","author":"MRNAN","language":"zh-Hans","timezone":null,"url":"http://yoursite.com","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"huhu","deploy":{"type":"git","repo":{"github":"git@github.com:Nsir15/Nsir15.github.io.git","oschina":"https://gitee.com/Nsir/Nsir.oschina.io.git"}},"ignore":[],"search":{"path":"search.xml","field":"post","format":"html","limit":10000},"index_generator":{"per_page":10,"order_by":"-date","path":""},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":10},"tag_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"menu":{"home":"/","archives":"/archives","about":"/about"},"logo":"/images/logo.png","categories_max":5,"tags_max":10,"favicon":"/images/favicon.ico","site_search":true,"rss":"/atom.xml","follow":{"github":"https://github.com/shixiaohu2206","facebook":"https://www.facebook.com/shi.xiaohu.5","instagram":"https://www.instagram.com/shi_xiaohu/"},"search_url":"/search.xml","site_icp":"","site_friends":{"房间里的小猫咪":"http://baidu.com"},"busuanzi":true,"share":["weibo","weixin","qqkongjian","QQ","douban","facebook","twitter","google"],"cdn_module":{"av_min":"https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min","jquery":"https://cdn.bootcss.com/jquery/3.4.1/jquery.min","busuanzi":"//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini","confirm":"https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min","fancybox":"https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"},"baidu_push":true,"reward":{"weixin":"images/weixin.png","zhifubao":"images/zhifubao.png"}}')
-  window.loadJs = function(d, m, a) {
-    var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
-    var b = document.createElement('script')
-    b.defer = true
-    b.setAttribute('type', 'text/javascript')
-    b.setAttribute('charset', 'UTF-8')
-    b.setAttribute('async', 'true')
-    b.setAttribute('src', d)
-    m && b.setAttribute('data-main', '/scripts/app')
-    if (typeof a === 'function') {
-      if (window.attachEvent) {
-        b.onreadystatechange = function() {
-          var e = b.readyState
-          if (e === 'loaded' || e === 'complete') {
-            b.onreadystatechange = null
-            a()
-          }
-        }
-      } else {
-        b.onload = a
-      }
-    }
-    c.appendChild(b)
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
   }
-  loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {
-    require.config({
-      paths: {
-        // site
-        share: 'share',
-        iconfont: 'iconfont',
-        hodgepodge: 'hodgepodge',
-        valine: ['cdn/Valine.min'],
-
-        // cdn
-        av: ['https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min', 'cdn/av-min'],
-        jquery: ['https://cdn.bootcss.com/jquery/3.4.1/jquery.min', 'cdn/jquery.min'],
-        busuanzi: ['//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini', 'cdn/busuanzi.pure.mini'],
-        confirm: ['https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min', 'cdn/jquery.confirm.min'],
-        fancybox: ['https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min', 'cdn/jquery.fancybox.min']
-      },
-
-      map: {
-        '*': {
-          // css: '/scripts/cdn/css-min.js'
-          css: 'https://cdn.bootcss.com/require-css/0.1.10/css.min.js'
-        }
-      },
-
-      shim: {
-        fancybox: {
-          // deps: ['css!../style/fancybox']
-          deps: ['css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css']
-        },
-        confirm: {
-          // deps: ['css!../style/confirm']
-          deps: ['css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css']
-        }
-      },
-
-      // 加载超时
-      waitSeconds: 3
-    })
-  })
 </script>
 
-<script>
-  ;(function() {
-    var bp = document.createElement('script')
-    var curProtocol = window.location.protocol.split(':')[0]
-    if (curProtocol === 'https') {
-      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
-    } else {
-      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
     }
-    var s = document.getElementsByTagName('script')[0]
-    s.parentNode.insertBefore(bp, s)
-  })()
-</script>
+    var path = "/" + search_path;
+    // monitor main search box;
 
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
