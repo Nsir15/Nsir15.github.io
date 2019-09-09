@@ -10,7 +10,7 @@
   
   <title>
     
-      MRNAN
+      About | MRNAN
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -143,123 +143,39 @@
   </div>
 </header>
 
-    <div id="article-banner">
-  <h2>Archives</h2>
-  <p class="post-date">文章归档</p>
+    <div id="about-banner" style="background-image: url(http://file.muyutech.com/about.jpg)"></div>
+<div class="author">
+  <div class="head">
+    <img src="https://avatars3.githubusercontent.com/u/16443628?v=3&s=460" />
+  </div>
+  <h3>MRNAN</h3>
+  
+    <p class="description">The end is always near.</p>
+  
+  <section class="share-icons">
+    
+    
+    
+    
+    
+    
+  </section>
 </div>
-<main class="app-body" id="archives">
-  
-  
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2019
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2019/08/23/事件/" class="archive-title">事件</a>
-        <p class="archive-date">08-23</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2019/08/22/js基础知识/" class="archive-title">js基础知识</a>
-        <p class="archive-date">08-22</p>
-      </div>
-    
-  </div>
-</section>
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2017
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2017/08/29/CALayer position 和 anchorPoint 的问题/" class="archive-title">CALayer position 和 anchorPoint 的问题</a>
-        <p class="archive-date">08-29</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/08/27/杂记/" class="archive-title">杂记</a>
-        <p class="archive-date">08-27</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/07/12/test/" class="archive-title">test</a>
-        <p class="archive-date">07-12</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/06/27/javascript/" class="archive-title">JavaScript</a>
-        <p class="archive-date">06-27</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/04/01/工作中的坑/" class="archive-title">工作中的坑</a>
-        <p class="archive-date">04-01</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/02/07/清除缓存/" class="archive-title">清除缓存</a>
-        <p class="archive-date">02-07</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017/02/05/iOS 项目小知识点/" class="archive-title">iOS 项目小知识点</a>
-        <p class="archive-date">02-05</p>
-      </div>
-    
-  </div>
-</section>
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2016
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2016/12/14/微信小程序/" class="archive-title">微信小程序</a>
-        <p class="archive-date">12-14</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2016/12/01/css/" class="archive-title">CSS</a>
-        <p class="archive-date">12-01</p>
-      </div>
-    
-  </div>
-</section>
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2015
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2015/10/01/git/" class="archive-title">git</a>
-        <p class="archive-date">10-01</p>
-      </div>
-    
-  </div>
-</section>
-  
-</main>
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/archives/page/2/index.html';
-    $('#article-banner').geopattern(url);
-    $('.header').removeClass('fixed-header');
+    $('.header').removeClass('fixed-header')
+    var windowH = $(window).height();
+    var author = $('.author')
+    var bodyH = author.offset().top + author[0].offsetHeight + 71;
+    if (bodyH < windowH) {
+      author.css({
+        'margin-bottom': windowH - bodyH
+      })
+    }
   })();
 </script>
+
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>
