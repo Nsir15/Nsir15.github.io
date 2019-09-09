@@ -1,147 +1,227 @@
 <!DOCTYPE html>
-<html>
-  <head><meta name="generator" content="Hexo 3.9.0">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-  <meta name="description" content="世界那么污，我想去看看。。。">
-  <meta name="keyword" content="iOS, js">
-  
-    <link rel="shortcut icon" href="/css/images/logo.png">
-  
-  <title>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="世界那么污，我想去看看。。。">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          CALayer position 和 anchorPoint 的问题 - undefined
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2017/08/29/CALayer position 和 anchorPoint 的问题/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
     
-      CALayer position 和 anchorPoint 的问题 | MRNAN
-    
-  </title>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
-  
-    css('css/plugins/gitment.css')
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
-  
-    <script src="/js/qrious.js"></script>
-  
-  
-    <script src="/js/gitment.js"></script>
-  
-  
-  
-    <!-- MathJax support START -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <!-- MathJax support END -->
-  
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
-<div class="wechat-share">
-  <img src="/css/images/logo.png">
-</div>
 
-  <body>
-    <header class="header fixed-header">
-  <div class="header-container">
-    <a class="home-link" href="/">
-      <div class="logo"></div>
-      <span>MRNAN</span>
-    </a>
-    <ul class="right-list">
-      
-        <li class="list-item">
-          
-            <a href="/" class="item-link">Home</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/tags/" class="item-link">Tags</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/archives/" class="item-link">Archives</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/about/" class="item-link">About</a>
-          
-        </li>
-      
-    </ul>
-    <div class="menu">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#iOS" title="iOS">iOS</a>
+                            
+                        </div>
+                        <h1>CALayer position 和 anchorPoint 的问题</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by MRNAN on
+                            2017-08-29
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="menu-mask">
-      <ul class="menu-list">
-        
-          <li class="menu-item">
-            
-              <a href="/" class="menu-link">Home</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/tags/" class="menu-link">Tags</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/archives/" class="menu-link">Archives</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/about/" class="menu-link">About</a>
-            
-          </li>
-        
-      </ul>
-    </div>
-  </div>
 </header>
 
-    <div id="article-banner">
-  <h2>CALayer position 和 anchorPoint 的问题</h2>
-  <p class="post-date">2017-08-29</p>
-  <div class="arrow-down">
-    <a href="javascript:;"></a>
-  </div>
-</div>
-<main class="app-body flex-box">
-  <!-- Article START -->
-  <article class="post-article">
-    <section class="markdown-content"><h2 id="概要："><a href="#概要：" class="headerlink" title="概要："></a>概要：</h2><blockquote>
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">MRNAN</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/project/">Project</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/categories/">categories</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/aboutme/">关于</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="概要："><a href="#概要：" class="headerlink" title="概要："></a>概要：</h2><blockquote>
 <p><code>CALayer</code> 的<code>position</code>白话来讲：<code>position</code>就是layer 自身的<code>anchorPoint</code>相对于父<code>superLayer</code>的坐标位置。<br>常规说来，在iOS上，一个图层的position位于父图层的左上角<br>具体概念参考：<a href="http://kittenyang.com/anchorpoint/" target="_blank" rel="noopener">这将是你最后一次纠结position与anchorPoint</a></p>
 </blockquote>
 <a id="more"></a>
@@ -177,230 +257,187 @@
 <figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[fanshapedPath addArcWithCenter:<span class="built_in">CGPointZero</span> radius:(pulsingWidth + <span class="number">20</span>) * <span class="number">0.5</span> startAngle:<span class="number">3</span> * M_PI / <span class="number">2</span> endAngle:<span class="number">0</span> clockwise:<span class="literal">YES</span>];</span><br><span class="line"> [fanshapedPath addLineToPoint:<span class="built_in">CGPointZero</span>];</span><br></pre></td></tr></table></figure>
 <p>现在原点位置画出扇形，然后再设置potision<code>fanshapedLayer.position = fanshapedCenter;</code>最后终于解决了这个问题。</p>
 <h5 id="最后，贴上draw-方法里的全部代码："><a href="#最后，贴上draw-方法里的全部代码：" class="headerlink" title="最后，贴上draw 方法里的全部代码："></a>最后，贴上draw 方法里的全部代码：</h5><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// An empty implementation adversely affects performance during animation.</span></span><br><span class="line">- (<span class="keyword">void</span>)drawRect:(<span class="built_in">CGRect</span>)rect &#123;</span><br><span class="line">    <span class="comment">// Drawing code</span></span><br><span class="line">    [<span class="keyword">super</span> drawRect:rect];</span><br><span class="line">    [[<span class="built_in">UIColor</span> whiteColor] setFill];</span><br><span class="line">    <span class="built_in">UIRectFill</span>(rect);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">UIImage</span> * image = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"radar_background"</span>];</span><br><span class="line">    [image drawInRect:rect];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">CGFloat</span> pulsingWidth = rect.size.width / <span class="number">2.5</span>;</span><br><span class="line">    <span class="built_in">CGFloat</span> pulsingX = <span class="keyword">self</span>.center.x - pulsingWidth * <span class="number">0.5</span>;</span><br><span class="line">    <span class="built_in">CGFloat</span> pulsingY = <span class="keyword">self</span>.center.y - pulsingWidth * <span class="number">0.5</span>;</span><br><span class="line">    <span class="comment">// 脉冲layer</span></span><br><span class="line">    <span class="built_in">CALayer</span> * pulsingLayer = [<span class="built_in">CALayer</span> layer];</span><br><span class="line">    pulsingLayer.frame = <span class="built_in">CGRectMake</span>(pulsingX, pulsingY, pulsingWidth, pulsingWidth);</span><br><span class="line">    pulsingLayer.borderColor = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">201</span>/<span class="number">255.0</span> green:<span class="number">201</span>/<span class="number">255.0</span> blue:<span class="number">201</span>/<span class="number">255.0</span> alpha:<span class="number">1</span>].CGColor;</span><br><span class="line">    pulsingLayer.cornerRadius = pulsingWidth * <span class="number">0.5</span>;</span><br><span class="line">    pulsingLayer.backgroundColor = [<span class="built_in">UIColor</span> whiteColor].CGColor;<span class="comment">//这里必须设置layer层的背景颜色，默认应该是透明的，导致设置的阴影颜色无法显示出来</span></span><br><span class="line">    pulsingLayer.shadowColor = [<span class="built_in">UIColor</span> blackColor].CGColor;</span><br><span class="line">    pulsingLayer.shadowOffset = <span class="built_in">CGSizeMake</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    pulsingLayer.shadowOpacity = <span class="number">1</span>;</span><br><span class="line">    pulsingLayer.shadowRadius = <span class="number">5</span>;</span><br><span class="line">    [<span class="keyword">self</span>.layer addSublayer:pulsingLayer];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 缩放动画</span></span><br><span class="line">    <span class="built_in">CABasicAnimation</span> * scaleAnimation = [<span class="built_in">CABasicAnimation</span> animationWithKeyPath:<span class="string">@"transform.scale"</span>];</span><br><span class="line">    scaleAnimation.autoreverses = <span class="literal">false</span>;</span><br><span class="line">    scaleAnimation.fromValue = @<span class="number">1.0</span>f;</span><br><span class="line">    scaleAnimation.toValue = @<span class="number">2.0</span>f;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 透明动画</span></span><br><span class="line">    <span class="built_in">CAKeyframeAnimation</span> * opacityAnimation = [<span class="built_in">CAKeyframeAnimation</span> animationWithKeyPath:<span class="string">@"opacity"</span>];</span><br><span class="line">    opacityAnimation.keyTimes = @[@<span class="number">0</span>,@<span class="number">0.1</span>,@<span class="number">0.2</span>,@<span class="number">0.3</span>,@<span class="number">0.4</span>,@<span class="number">0.5</span>,@<span class="number">0.6</span>,@<span class="number">0.7</span>,@<span class="number">0.8</span>,@<span class="number">0.9</span>,@<span class="number">1</span>];</span><br><span class="line">    opacityAnimation.values = @[@<span class="number">1</span>,@<span class="number">0.9</span>,@<span class="number">0.8</span>,@<span class="number">0.7</span>,@<span class="number">0.6</span>,@<span class="number">0.5</span>,@<span class="number">0.4</span>,@<span class="number">0.3</span>,@<span class="number">0.2</span>,@<span class="number">0.1</span>,@<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">CAAnimationGroup</span> * animationGroup = [<span class="built_in">CAAnimationGroup</span> animation];</span><br><span class="line">    animationGroup.beginTime = <span class="built_in">CACurrentMediaTime</span>() + <span class="number">1</span>;</span><br><span class="line">    animationGroup.fillMode = kCAFillModeBackwards;</span><br><span class="line">    animationGroup.repeatCount = HUGE_VAL;</span><br><span class="line">    animationGroup.timingFunction = [<span class="built_in">CAMediaTimingFunction</span> functionWithName:kCAMediaTimingFunctionLinear];</span><br><span class="line">    animationGroup.duration = <span class="number">2</span>;</span><br><span class="line">    animationGroup.animations = @[scaleAnimation,opacityAnimation];</span><br><span class="line">    [pulsingLayer addAnimation:animationGroup forKey:<span class="string">@"pulse"</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 中间圆环</span></span><br><span class="line">    <span class="built_in">CALayer</span> * middleCycle = [<span class="built_in">CALayer</span> layer];</span><br><span class="line">    middleCycle.frame = <span class="built_in">CGRectMake</span>(pulsingX, pulsingY, pulsingWidth, pulsingWidth);</span><br><span class="line">    middleCycle.cornerRadius = pulsingWidth * <span class="number">0.5</span>;</span><br><span class="line">    middleCycle.borderColor = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">41</span>/<span class="number">255.0</span> green:<span class="number">152</span>/<span class="number">255.0</span> blue:<span class="number">241</span>/<span class="number">255.0</span> alpha:<span class="number">1</span>].CGColor;</span><br><span class="line">    middleCycle.backgroundColor = [<span class="built_in">UIColor</span> whiteColor].CGColor;</span><br><span class="line">    middleCycle.shadowOffset = <span class="built_in">CGSizeMake</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    middleCycle.borderWidth = <span class="number">1</span>;</span><br><span class="line">    middleCycle.shadowRadius = <span class="number">3</span>;</span><br><span class="line">    middleCycle.shadowOpacity = <span class="number">1</span>;</span><br><span class="line">    middleCycle.shadowColor = [<span class="built_in">UIColor</span> lightGrayColor].CGColor;</span><br><span class="line">    [<span class="keyword">self</span>.layer addSublayer:middleCycle];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加到self.layer上</span></span><br><span class="line">    <span class="built_in">CGPoint</span> fanshapedCenter = <span class="keyword">self</span>.center;</span><br><span class="line">    <span class="built_in">UIBezierPath</span> * fanshapedPath = [<span class="built_in">UIBezierPath</span> bezierPath];</span><br><span class="line">    [fanshapedPath addArcWithCenter:<span class="built_in">CGPointZero</span> radius:(pulsingWidth + <span class="number">20</span>) * <span class="number">0.5</span> startAngle:<span class="number">3</span> * M_PI / <span class="number">2</span> endAngle:<span class="number">0</span> clockwise:<span class="literal">YES</span>];</span><br><span class="line">    [fanshapedPath addLineToPoint:<span class="built_in">CGPointZero</span>];</span><br><span class="line">    [fanshapedPath closePath];</span><br><span class="line">    <span class="built_in">CAShapeLayer</span> * fanshapedLayer = [<span class="built_in">CAShapeLayer</span> layer];</span><br><span class="line">    fanshapedLayer.path = fanshapedPath.CGPath;</span><br><span class="line">    fanshapedLayer.opacity = <span class="number">0.7</span>;</span><br><span class="line">    fanshapedLayer.position = fanshapedCenter;</span><br><span class="line">    fanshapedLayer.fillColor = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">41</span>/<span class="number">255.0</span> green:<span class="number">152</span>/<span class="number">255.0</span> blue:<span class="number">241</span>/<span class="number">255.0</span> alpha:<span class="number">1</span>].CGColor;</span><br><span class="line">    [<span class="keyword">self</span>.layer addSublayer:fanshapedLayer];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加到middleCycle上</span></span><br><span class="line"><span class="comment">//    [fanshapedPath addArcWithCenter:CGPointMake(0,0) radius:(pulsingWidth + 20) * 0.5 startAngle:3 * M_PI / 2 endAngle:0 clockwise:YES];</span></span><br><span class="line"><span class="comment">//    [fanshapedPath addLineToPoint:CGPointZero];</span></span><br><span class="line"><span class="comment">//    CAShapeLayer * fanshaped = [CAShapeLayer layer];</span></span><br><span class="line"><span class="comment">//    fanshaped.fillColor = [UIColor colorWithRed:41/255.0 green:152/255.0 blue:241/255.0 alpha:1].CGColor;</span></span><br><span class="line"><span class="comment">//    fanshaped.opacity = 0.7;</span></span><br><span class="line"><span class="comment">//    fanshaped.position = CGPointMake(middleCycle.frame.size.width * 0.5, middleCycle.frame.size.height * 0.5);</span></span><br><span class="line"><span class="comment">//    [fanshapedPath closePath];</span></span><br><span class="line"><span class="comment">//    fanshaped.path = fanshapedPath.CGPath;</span></span><br><span class="line"><span class="comment">//    [middleCycle addSublayer:fanshaped];</span></span><br><span class="line"><span class="comment">//    NSLog(@"fanshaped==== frame:%@,anchorPoint:%@,bounds:%@,position:%@",NSStringFromCGRect(fanshaped.frame),NSStringFromCGPoint(fanshaped.anchorPoint),NSStringFromCGRect(fanshaped.bounds),NSStringFromCGPoint(fanshaped.position));</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">CABasicAnimation</span> *rotationAnimation = [<span class="built_in">CABasicAnimation</span> animationWithKeyPath:<span class="string">@"transform.rotation.z"</span>];</span><br><span class="line">    rotationAnimation.toValue = [<span class="built_in">NSNumber</span> numberWithFloat: <span class="number">3</span> * M_PI ];</span><br><span class="line">    rotationAnimation.duration = <span class="number">8</span>;</span><br><span class="line">    rotationAnimation.cumulative = <span class="literal">YES</span>;</span><br><span class="line">    rotationAnimation.removedOnCompletion = <span class="literal">NO</span>;</span><br><span class="line">    rotationAnimation.repeatCount = MAXFLOAT;</span><br><span class="line">    rotationAnimation.fillMode = kCAFillModeForwards;</span><br><span class="line">    <span class="comment">//    [middleCycle addAnimation:rotationAnimation forKey:@"rotation"];</span></span><br><span class="line"></span><br><span class="line">    [fanshapedLayer addAnimation:rotationAnimation forKey:<span class="string">@"rotation"</span>];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</section>
-    <!-- Tags START -->
-    
-      <div class="tags">
-        <span>Tags:</span>
-        
-  <a href="/tags#iOS" >
-    <span class="tag-code">iOS</span>
-  </a>
 
-      </div>
-    
-    <!-- Tags END -->
-    <!-- NAV START -->
-    
-  <div class="nav-container">
-    <!-- reverse left and right to put prev and next in a more logic postition -->
-    
-      <a class="nav-left" href="/2017/08/27/杂记/">
-        <span class="nav-arrow">← </span>
-        
-          杂记
-        
-      </a>
-    
-    
-      <a class="nav-right" href="/2019/08/22/js基础知识/">
-        
-          js基础知识
-        
-        <span class="nav-arrow"> →</span>
-      </a>
-    
-  </div>
+                
 
-    <!-- NAV END -->
-    <!-- 打赏 START -->
-    
-      <div class="money-like">
-        <div class="reward-btn">
-          赏
-          <span class="money-code">
-            <span class="alipay-code">
-              <div class="code-image"></div>
-              <b>使用支付宝打赏</b>
-            </span>
-            <span class="wechat-code">
-              <div class="code-image"></div>
-              <b>使用微信打赏</b>
-            </span>
-          </span>
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/08/22/js基础知识/" data-toggle="tooltip" data-placement="top" title="js基础知识">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/08/27/杂记/" data-toggle="tooltip" data-placement="top" title="杂记">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
         </div>
-        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
-      </div>
-    
-    <!-- 打赏 END -->
-    <!-- 二维码 START -->
-    
-      <div class="qrcode">
-        <canvas id="share-qrcode"></canvas>
-        <p class="notice">扫描二维码，分享此文章</p>
-      </div>
-    
-    <!-- 二维码 END -->
-    
-      <!-- Gitment START -->
-      <div id="comments"></div>
-      <!-- Gitment END -->
-    
-  </article>
-  <!-- Article END -->
-  <!-- Catalog START -->
-  
-    <aside class="catalog-container">
-  <div class="toc-main">
-    <strong class="toc-title">Catalog</strong>
-    
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#概要："><span class="toc-nav-text">概要：</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#正文："><span class="toc-nav-text">正文：</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#1-外部扩散的脉冲layer。"><span class="toc-nav-text">1.外部扩散的脉冲layer。</span></a></li><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#2-雷达扫面的内圈layer。"><span class="toc-nav-text">2.雷达扫面的内圈layer。</span></a></li><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#3-雷达扫描的扇形layer。"><span class="toc-nav-text">3.雷达扫描的扇形layer。</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#最后，贴上draw-方法里的全部代码："><span class="toc-nav-text">最后，贴上draw 方法里的全部代码：</span></a></li></ol></li></ol></li></ol></li></ol>
-    
-  </div>
-</aside>
-  
-  <!-- Catalog END -->
-</main>
-
-<script>
-  (function () {
-    var url = 'http://yoursite.com/2017/08/29/CALayer position 和 anchorPoint 的问题/';
-    var banner = ''
-    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
-      $('#article-banner').css({
-        'background-image': 'url(' + banner + ')'
-      })
-    } else {
-      $('#article-banner').geopattern(url)
-    }
-    $('.header').removeClass('fixed-header')
-
-    // error image
-    $(".markdown-content img").on('error', function() {
-      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
-      $(this).css({
-        'cursor': 'default'
-      })
-    })
-
-    // zoom image
-    $(".markdown-content img").on('click', function() {
-      var src = $(this).attr('src')
-      if (src !== 'http://file.muyutech.com/error-img.png') {
-        var imageW = $(this).width()
-        var imageH = $(this).height()
-
-        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
-        zoom = zoom < 1 ? 1 : zoom
-        zoom = zoom > 2 ? 2 : zoom
-        var transY = (($(window).height() - imageH) / 2).toFixed(2)
-
-        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
-        $('.image-view-wrap').addClass('wrap-active')
-        $('.image-view-wrap img').css({
-          'width': `${imageW}`,
-          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
-        })
-        $('html').css('overflow', 'hidden')
-
-        $('.image-view-wrap').on('click', function() {
-          $(this).remove()
-          $('html').attr('style', '')
-        })
-      }
-    })
-  })();
-</script>
-
-
-  <script>
-    var qr = new QRious({
-      element: document.getElementById('share-qrcode'),
-      value: document.location.href
-    });
-  </script>
-
-
-
-  <script>
-    var gitmentConfig = "mrnan";
-    if (gitmentConfig !== 'undefined') {
-      var gitment = new Gitment({
-        id: "CALayer position 和 anchorPoint 的问题",
-        owner: "mrnan",
-        repo: "Nsir15.github.io",
-        oauth: {
-          client_id: "0085af269ee29a932100",
-          client_secret: "dc4b2e1f7246f8f21d635eb768dd81b9e201d670"
-        },
-        theme: {
-          render(state, instance) {
-            const container = document.createElement('div')
-            container.lang = "en-US"
-            container.className = 'gitment-container gitment-root-container'
-            container.appendChild(instance.renderHeader(state, instance))
-            container.appendChild(instance.renderEditor(state, instance))
-            container.appendChild(instance.renderComments(state, instance))
-            container.appendChild(instance.renderFooter(state, instance))
-            return container;
-          }
-        }
-      })
-      gitment.render(document.getElementById('comments'))
-    }
-  </script>
+    </div>
+</article>
 
 
 
 
-    <div class="scroll-top">
-  <span class="arrow-icon"></span>
-</div>
-    <footer class="app-footer">
-  <p class="copyright">
-    &copy; 2019 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
-    <br>
-    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
-  </p>
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; MRNAN 2019 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="http://beantech.org">BeanTech</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
 </footer>
 
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
 <script>
-  function async(u, c) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
-</script>
-<script>
-  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
-    FastClick.attach(document.body);
-  })
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
 </script>
 
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
 <script>
-  var hasLine = 'true';
-  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
-    $('figure pre').each(function(i, block) {
-      var figure = $(this).parents('figure');
-      if (hasLine === 'false') {
-        figure.find('.gutter').hide();
-      }
-      var lang = figure.attr('class').split(' ')[1] || 'code';
-      var codeHtml = $(this).html();
-      var codeTag = document.createElement('code');
-      codeTag.className = lang;
-      codeTag.innerHTML = codeHtml;
-      $(this).attr('class', '').empty().html(codeTag);
-      figure.attr('data-lang', lang.toUpperCase());
-      hljs.highlightBlock(block);
-    });
-  })
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
 </script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
 <!-- Baidu Tongji -->
 
-<script src="/js/script.js"></script>
-  </body>
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
 </html>
