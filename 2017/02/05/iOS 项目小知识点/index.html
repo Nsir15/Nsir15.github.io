@@ -1,96 +1,281 @@
 <!DOCTYPE html>
-<html>
-  <head><meta name="generator" content="Hexo 3.9.0">
-    
-    <meta charset="utf-8">
-    <meta name="baidu-site-verification" content="vvVgSQUzPU">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content>
-    
-    <meta name="description" content="世界那么污，我想去看看。。。">
-    <title>MRNAN - 个人博客</title>
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/style/style.css">
-  </head>
-  <body>
-    <div id="fixed-menu">
-      <span class="iconfont icon-arrowup"></span>
-    </div>
-    <div id="progress">
-      <div class="line"></div>
-    </div>
-    <div id="head">
-      
-      <a href="/" class>
-        Home
-      </a>
-      
-      <a href="/archives" class>
-        Archives
-      </a>
-      
-      <a href="/about" class>
-        About
-      </a>
-      
-    </div>
-    <div id="container">
-      <div id="main">
-        <div class="navbar">
-          <div class="toggle">
-            <span class="iconfont icon-menu toggle-icon"></span>
-          </div>
-          <div class="search">
-            <div class="input-warp">
-              <span class="iconfont icon-sousuo"></span>
-              <input type="text" name id placeholder="Search Keys">
-            </div>
-          </div>
-        </div>
-        <div class="content">
-          <article class="post-entry">
-    <div class="header">
-      <div class="title">iOS 项目小知识点</div>
-      <div class="meta">
-        <span class="item">
-          <span class="iconfont icon-time-circle"></span>
-          <span>2017/02/05</span>
-        </span>
 
-         
-        <span class="item">
-          <span class="iconfont icon-folder"></span>
-          <span>
-              
-                
-                  <a href="/categories/iOS">iOS</a>
-                
-              
-          </span>
-        </span>
-        
-        
-         
-          <span class="item">
-            <span class="iconfont icon-tag1"></span>
-            <span>
-                
-                  
-                    <a href="/tags/iOS">iOS</a>
-                  
-                
-            </span>
-          </span>
-         
-        <span class="item leancloud-visitors" id="https://marauder.top/2017/02/05/iOS 项目小知识点/" data-flag-title="iOS 项目小知识点">
-          <span class="iconfont icon-eye1"></span>
-          <span class="leancloud-visitors-count"></span>
-        </span>
-      </div>
-      <div>
-      </div>
+
+
+
+
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="[toc] 自定义控件 在- (instancetype)initWithFrame:(CGRect)frame里自定义控件在- (void)layoutSubviews  里布局控件  1234567名字叫attributes并且是NSDictionary *类型的参数，它的key一般都有以下规律 1.iOS7开始 1&amp;gt; 所有的key都来源于： NSAttributedString.h 2">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 项目小知识点">
+<meta property="og:url" content="https://marauder.top/2017/02/05/iOS 项目小知识点/index.html">
+<meta property="og:site_name" content="MRNAN">
+<meta property="og:description" content="[toc] 自定义控件 在- (instancetype)initWithFrame:(CGRect)frame里自定义控件在- (void)layoutSubviews  里布局控件  1234567名字叫attributes并且是NSDictionary *类型的参数，它的key一般都有以下规律 1.iOS7开始 1&amp;gt; 所有的key都来源于： NSAttributedString.h 2">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-494914586ad9f117.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-438449526306909c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-1b72dbea6ce3c123.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-13edc8b059e545ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-ae86d387b8e4f8e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-bc281de06bbc0996.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-ab6ca235996cb993.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/972822-719483b12316733c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-08-22T11:17:26.424Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 项目小知识点">
+<meta name="twitter:description" content="[toc] 自定义控件 在- (instancetype)initWithFrame:(CGRect)frame里自定义控件在- (void)layoutSubviews  里布局控件  1234567名字叫attributes并且是NSDictionary *类型的参数，它的key一般都有以下规律 1.iOS7开始 1&amp;gt; 所有的key都来源于： NSAttributedString.h 2">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/972822-494914586ad9f117.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  <link rel="canonical" href="https://marauder.top/2017/02/05/iOS 项目小知识点/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>iOS 项目小知识点 | MRNAN</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MRNAN</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
-    <p>[toc]</p>
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://marauder.top/2017/02/05/iOS 项目小知识点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MRNAN">
+      <meta itemprop="description" content="世界那么污，我想去看看。。。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MRNAN">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">iOS 项目小知识点
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2017-02-05 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-05T00:00:00+08:00">2017-02-05</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-22 19:17:26" itemprop="dateModified" datetime="2019-08-22T19:17:26+08:00">2019-08-22</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>[toc]</p>
 <h1 id="自定义控件"><a href="#自定义控件" class="headerlink" title="自定义控件"></a>自定义控件</h1><blockquote>
 <p>在- (instancetype)initWithFrame:(CGRect)frame<br>里自定义控件<br>在- (void)layoutSubviews  里布局控件</p>
 </blockquote>
@@ -241,213 +426,212 @@
 <p><a href="http://www.jianshu.com/p/66b5b777f5dc" target="_blank" rel="noopener">http://www.jianshu.com/p/66b5b777f5dc</a></p>
 </blockquote>
 
-
-  
-
-  
-
-  </article></div>
-
-  <div class="post-copyright">
-    <div class="auth">
-      本文作者：<a href="https://marauder.top">MRNAN</a>
     </div>
-    <div class="link">
-      永久链接：<a href="https://marauder.top/2017/02/05/iOS 项目小知识点/">https://marauder.top/2017/02/05/iOS 项目小知识点/</a>
-    </div>
-    <div class="declare">
-      版权声明：本文首发于<a href="https://marauder.top">MRNAN</a>的博客，转载请注明出处！
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2016/12/14/微信小程序/" rel="next" title="微信小程序">
+                  <i class="fa fa-chevron-left"></i> 微信小程序
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2017/02/07/清除缓存/" rel="prev" title="清除缓存">
+                  清除缓存 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
 
-  <div id="comment"></div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
-        </div>
-        <footer>
-          <div class="copyright">
-            ©2019 <a href="https://marauder.top">MRNAN</a>. Powered by Hexo &
-            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu">hexo-theme-huhu</a>
-          </div>
-          
-        </footer>
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义控件"><span class="nav-number">1.</span> <span class="nav-text">自定义控件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cell分割线顶头操作"><span class="nav-number">2.</span> <span class="nav-text">cell分割线顶头操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-第一种方法，利用系统的属性去设置"><span class="nav-number">2.1.</span> <span class="nav-text">1.第一种方法，利用系统的属性去设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tableView底层实现"><span class="nav-number">2.2.</span> <span class="nav-text">tableView底层实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-第二种方法，重写cell-的setFrame-可以随意设置cell-的间距，比较万能。"><span class="nav-number">2.3.</span> <span class="nav-text">2.第二种方法，重写cell 的setFrame,可以随意设置cell 的间距，比较万能。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#屏幕适配"><span class="nav-number">3.</span> <span class="nav-text">屏幕适配</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从Xib加载的view-设置动画"><span class="nav-number">4.</span> <span class="nav-text">从Xib加载的view 设置动画</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个xib文件可以管理多个view"><span class="nav-number">5.</span> <span class="nav-text">一个xib文件可以管理多个view</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重写button-的布局"><span class="nav-number">6.</span> <span class="nav-text">重写button 的布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义tabBar的问题"><span class="nav-number">7.</span> <span class="nav-text">自定义tabBar的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS类私有属性的访问和修改"><span class="nav-number">8.</span> <span class="nav-text">iOS类私有属性的访问和修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS-类别中添加属性（属性和实例变量的区别）"><span class="nav-number">9.</span> <span class="nav-text">iOS 类别中添加属性（属性和实例变量的区别）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通过category-和-runtime-设置textField-的-placehold-的颜色"><span class="nav-number">10.</span> <span class="nav-text">通过category 和 runtime 设置textField 的 placehold  的颜色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算总行数的万能公式"><span class="nav-number">11.</span> <span class="nav-text">计算总行数的万能公式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tableView-调整cell-间距"><span class="nav-number">12.</span> <span class="nav-text">tableView  调整cell 间距</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#跳转到网页"><span class="nav-number">13.</span> <span class="nav-text">跳转到网页</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断view-是否被加载"><span class="nav-number">14.</span> <span class="nav-text">判断view 是否被加载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些全局常量，尽量使用extern来引用，其次再选择考虑Macro"><span class="nav-number">15.</span> <span class="nav-text">一些全局常量，尽量使用extern来引用，其次再选择考虑Macro</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xib-cell-拖线报错：-Terminating-app-due-to-uncaught-exception-‘NSUnknownKeyException’-reason-‘-setValue-forUndefinedKey-this-class-is-not-key-value-coding-compliant-for-the-key"><span class="nav-number">16.</span> <span class="nav-text">xib cell 拖线报错： Terminating app due to uncaught exception ‘NSUnknownKeyException’, reason: ‘[ setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#退出键盘"><span class="nav-number">16.1.</span> <span class="nav-text">退出键盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#父View添加手势，子View不要去响应父View点击事件"><span class="nav-number">16.2.</span> <span class="nav-text">父View添加手势，子View不要去响应父View点击事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调整导航栏leftBarButtonItem-和-rightBarbuttonItem-的偏移量"><span class="nav-number">16.3.</span> <span class="nav-text">调整导航栏leftBarButtonItem 和 rightBarbuttonItem 的偏移量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态修改UIButton的title-的时候字体闪烁的问题："><span class="nav-number">16.4.</span> <span class="nav-text">动态修改UIButton的title 的时候字体闪烁的问题：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assign-修饰代理导致野指针的问题"><span class="nav-number">16.5.</span> <span class="nav-text">assign 修饰代理导致野指针的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单例问题"><span class="nav-number">16.6.</span> <span class="nav-text">单例问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在iPhone5s-（10-2系统）拨打电话没有弹框提示，其他手机（10-3）有弹框"><span class="nav-number">16.7.</span> <span class="nav-text">在iPhone5s （10.2系统）拨打电话没有弹框提示，其他手机（10.3）有弹框</span></a></li></ol></li></ol></div>
+        
       </div>
-      <div id="card-wrap">
-        <div class="card">
-          <div class="logo-widget">
-            <div class="author">
-              Utone
-            </div>
-            <div class="logo" style="background-image: url('/images/logo.jpeg')"></div>
-          </div>
-          <div class="locate-widget">
-            <div class="city-wrap">
-              <span class="iconfont icon-dangdi"></span>
-              <span id="city-name"></span>
-            </div>
-            <div class="weather-wrap">
-              <div id="weather-img">
-                <svg class="icon weather" aria-hidden="true">
-                  <use xlink:href="#icon-qingjiafeng"/>
-                </svg>
-              </div>
-              <div id="weather-detail"></div>
-            </div>
-          </div>
-          <div class="follow-widget">
-            
-            <a href="https://github.com/Nsir15" target="_block">
-              <span class="iconfont icon-github"></span>
-            </a>
-             
-            <a href="/atom.xml" target="_block">
-              <span class="iconfont icon-rss"></span>
-            </a>
-            
-          </div>
-           
-          <div class="toc-widget">
-            <div class="title">
-              <span>Toc</span>
-            </div>
-            <div class="post-toc">
-              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义控件"><span class="toc-text">自定义控件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cell分割线顶头操作"><span class="toc-text">cell分割线顶头操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-第一种方法，利用系统的属性去设置"><span class="toc-text">1.第一种方法，利用系统的属性去设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tableView底层实现"><span class="toc-text">tableView底层实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-第二种方法，重写cell-的setFrame-可以随意设置cell-的间距，比较万能。"><span class="toc-text">2.第二种方法，重写cell 的setFrame,可以随意设置cell 的间距，比较万能。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#屏幕适配"><span class="toc-text">屏幕适配</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#从Xib加载的view-设置动画"><span class="toc-text">从Xib加载的view 设置动画</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一个xib文件可以管理多个view"><span class="toc-text">一个xib文件可以管理多个view</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重写button-的布局"><span class="toc-text">重写button 的布局</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义tabBar的问题"><span class="toc-text">自定义tabBar的问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS类私有属性的访问和修改"><span class="toc-text">iOS类私有属性的访问和修改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-类别中添加属性（属性和实例变量的区别）"><span class="toc-text">iOS 类别中添加属性（属性和实例变量的区别）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#通过category-和-runtime-设置textField-的-placehold-的颜色"><span class="toc-text">通过category 和 runtime 设置textField 的 placehold  的颜色</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算总行数的万能公式"><span class="toc-text">计算总行数的万能公式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tableView-调整cell-间距"><span class="toc-text">tableView  调整cell 间距</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#跳转到网页"><span class="toc-text">跳转到网页</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#判断view-是否被加载"><span class="toc-text">判断view 是否被加载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些全局常量，尽量使用extern来引用，其次再选择考虑Macro"><span class="toc-text">一些全局常量，尽量使用extern来引用，其次再选择考虑Macro</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#xib-cell-拖线报错：-Terminating-app-due-to-uncaught-exception-‘NSUnknownKeyException’-reason-‘-setValue-forUndefinedKey-this-class-is-not-key-value-coding-compliant-for-the-key"><span class="toc-text">xib cell 拖线报错： Terminating app due to uncaught exception ‘NSUnknownKeyException’, reason: ‘[ setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#退出键盘"><span class="toc-text">退出键盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#父View添加手势，子View不要去响应父View点击事件"><span class="toc-text">父View添加手势，子View不要去响应父View点击事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调整导航栏leftBarButtonItem-和-rightBarbuttonItem-的偏移量"><span class="toc-text">调整导航栏leftBarButtonItem 和 rightBarbuttonItem 的偏移量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态修改UIButton的title-的时候字体闪烁的问题："><span class="toc-text">动态修改UIButton的title 的时候字体闪烁的问题：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#assign-修饰代理导致野指针的问题"><span class="toc-text">assign 修饰代理导致野指针的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单例问题"><span class="toc-text">单例问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在iPhone5s-（10-2系统）拨打电话没有弹框提示，其他手机（10-3）有弹框"><span class="toc-text">在iPhone5s （10.2系统）拨打电话没有弹框提示，其他手机（10.3）有弹框</span></a></li></ol></li></ol>
-            </div>
-          </div>
-           
-          <div class="category-widget">
-            <div class="title">
-              <span>Categories</span>
-              <span><a href="/archives">···</a></span>
-            </div>
-            <div class="list">
-              <ul>
-                 
-                <li>
-                  <a href="/categories/前端/">
-                    前端
-                  </a>
-                </li>
-                  
-                <li>
-                  <a href="/categories/git/">
-                    git
-                  </a>
-                </li>
-                  
-                <li>
-                  <a href="/categories/iOS/">
-                    iOS
-                  </a>
-                </li>
-                  
-                <li>
-                  <a href="/categories/小程序/">
-                    小程序
-                  </a>
-                </li>
-                  
-                <li>
-                  <a href="/categories/hexo/">
-                    hexo
-                  </a>
-                </li>
-                 
-              </ul>
-            </div>
-          </div>
-          <div class="tag-widget">
-            <div class="title">
-              <span>Tag Cloud</span>
-              <span><a href>···</a></span>
-            </div>
-            <div class="tag-cloud">
-              <a href="/tags/git/" style="font-size: 13px; color: #4a4a4a">git</a> <a href="/tags/hexo/" style="font-size: 13px; color: #4a4a4a">hexo</a> <a href="/tags/iOS/" style="font-size: 20px; color: #4a4a4a">iOS</a> <a href="/tags/前端/" style="font-size: 16.5px; color: #4a4a4a">前端</a> <a href="/tags/小程序/" style="font-size: 13px; color: #4a4a4a">小程序</a>
-            </div>
-          </div>
-        </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MRNAN</p>
+  <div class="site-description" itemprop="description">世界那么污，我想去看看。。。</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
       </div>
     
-  </body>
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+        
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span>
+        
+      </div>
+    
+  </nav>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MRNAN</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
   
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/muse.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
 </html>
-<script type="text/javascript">
-  window.THEME_CONFIG = JSON.parse('{"title":"MRNAN","subtitle":"个人博客","description":"世界那么污，我想去看看。。。","author":"MRNAN","language":"zh-Hans","timezone":null,"url":"https://marauder.top","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"huhu","deploy":{"type":"git","repo":{"github":"git@github.com:Nsir15/Nsir15.github.io.git","oschina":"https://gitee.com/Nsir/Nsir.oschina.io.git"}},"ignore":[],"search":{"path":"search.xml","field":"post","format":"html","limit":10000},"index_generator":{"per_page":10,"order_by":"-date","path":""},"category_generator":{"per_page":10},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"tag_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"menu":{"home":"/","archives":"/archives","about":"/about"},"logo":"/images/logo.png","categories_max":5,"tags_max":10,"favicon":"/images/favicon.ico","site_search":true,"rss":"/atom.xml","follow":{"github":"https://github.com/Nsir15"},"search_url":"/search.xml","site_icp":"","site_friends":null,"busuanzi":true,"share":["weibo","weixin","qqkongjian","QQ","douban","facebook","twitter","google"],"cdn_module":{"av_min":"https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min","jquery":"https://cdn.bootcss.com/jquery/3.4.1/jquery.min","busuanzi":"//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini","confirm":"https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min","fancybox":"https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"},"baidu_push":true}')
-  window.loadJs = function(d, m, a) {
-    var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
-    var b = document.createElement('script')
-    b.defer = true
-    b.setAttribute('type', 'text/javascript')
-    b.setAttribute('charset', 'UTF-8')
-    b.setAttribute('async', 'true')
-    b.setAttribute('src', d)
-    m && b.setAttribute('data-main', '/scripts/app')
-    if (typeof a === 'function') {
-      if (window.attachEvent) {
-        b.onreadystatechange = function() {
-          var e = b.readyState
-          if (e === 'loaded' || e === 'complete') {
-            b.onreadystatechange = null
-            a()
-          }
-        }
-      } else {
-        b.onload = a
-      }
-    }
-    c.appendChild(b)
-  }
-  loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {
-    require.config({
-      paths: {
-        // site
-        share: 'share',
-        iconfont: 'iconfont',
-        hodgepodge: 'hodgepodge',
-        valine: ['cdn/Valine.min'],
-
-        // cdn
-        av: ['https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min', 'cdn/av-min'],
-        jquery: ['https://cdn.bootcss.com/jquery/3.4.1/jquery.min', 'cdn/jquery.min'],
-        busuanzi: ['//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini', 'cdn/busuanzi.pure.mini'],
-        confirm: ['https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min', 'cdn/jquery.confirm.min'],
-        fancybox: ['https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min', 'cdn/jquery.fancybox.min']
-      },
-
-      map: {
-        '*': {
-          // css: '/scripts/cdn/css-min.js'
-          css: 'https://cdn.bootcss.com/require-css/0.1.10/css.min.js'
-        }
-      },
-
-      shim: {
-        fancybox: {
-          // deps: ['css!../style/fancybox']
-          deps: ['css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css']
-        },
-        confirm: {
-          // deps: ['css!../style/confirm']
-          deps: ['css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css']
-        }
-      },
-
-      // 加载超时
-      waitSeconds: 3
-    })
-  })
-</script>
-
-<script>
-  ;(function() {
-    var bp = document.createElement('script')
-    var curProtocol = window.location.protocol.split(':')[0]
-    if (curProtocol === 'https') {
-      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
-    } else {
-      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
-    }
-    var s = document.getElementsByTagName('script')[0]
-    s.parentNode.insertBefore(bp, s)
-  })()
-</script>
-

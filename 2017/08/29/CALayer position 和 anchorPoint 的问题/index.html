@@ -1,96 +1,282 @@
 <!DOCTYPE html>
-<html>
-  <head><meta name="generator" content="Hexo 3.9.0">
+
+
+
+
+
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="概要： CALayer 的position白话来讲：position就是layer 自身的anchorPoint相对于父superLayer的坐标位置。常规说来，在iOS上，一个图层的position位于父图层的左上角具体概念参考：这将是你最后一次纠结position与anchorPoint">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CALayer position 和 anchorPoint 的问题">
+<meta property="og:url" content="https://marauder.top/2017/08/29/CALayer position 和 anchorPoint 的问题/index.html">
+<meta property="og:site_name" content="MRNAN">
+<meta property="og:description" content="概要： CALayer 的position白话来讲：position就是layer 自身的anchorPoint相对于父superLayer的坐标位置。常规说来，在iOS上，一个图层的position位于父图层的左上角具体概念参考：这将是你最后一次纠结position与anchorPoint">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://static.pexels.com/photos/546819/pexels-photo-546819.jpeg">
+<meta property="og:updated_time" content="2017-08-31T15:46:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CALayer position 和 anchorPoint 的问题">
+<meta name="twitter:description" content="概要： CALayer 的position白话来讲：position就是layer 自身的anchorPoint相对于父superLayer的坐标位置。常规说来，在iOS上，一个图层的position位于父图层的左上角具体概念参考：这将是你最后一次纠结position与anchorPoint">
+<meta name="twitter:image" content="https://static.pexels.com/photos/546819/pexels-photo-546819.jpeg">
+  <link rel="canonical" href="https://marauder.top/2017/08/29/CALayer position 和 anchorPoint 的问题/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>CALayer position 和 anchorPoint 的问题 | MRNAN</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MRNAN</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
     
-    <meta charset="utf-8">
-    <meta name="baidu-site-verification" content="vvVgSQUzPU">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content>
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
     
-    <meta name="description" content="世界那么污，我想去看看。。。">
-    <title>MRNAN - 个人博客</title>
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/style/style.css">
-  </head>
-  <body>
-    <div id="fixed-menu">
-      <span class="iconfont icon-arrowup"></span>
-    </div>
-    <div id="progress">
-      <div class="line"></div>
-    </div>
-    <div id="head">
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://marauder.top/2017/08/29/CALayer position 和 anchorPoint 的问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MRNAN">
+      <meta itemprop="description" content="世界那么污，我想去看看。。。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MRNAN">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">CALayer position 和 anchorPoint 的问题
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2017-08-29 00:00:00" itemprop="dateCreated datePublished" datetime="2017-08-29T00:00:00+08:00">2017-08-29</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2017-08-31 23:46:30" itemprop="dateModified" datetime="2017-08-31T23:46:30+08:00">2017-08-31</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-      <a href="/" class>
-        Home
-      </a>
-      
-      <a href="/archives" class>
-        Archives
-      </a>
-      
-      <a href="/about" class>
-        About
-      </a>
-      
-    </div>
-    <div id="container">
-      <div id="main">
-        <div class="navbar">
-          <div class="toggle">
-            <span class="iconfont icon-menu toggle-icon"></span>
-          </div>
-          <div class="search">
-            <div class="input-warp">
-              <span class="iconfont icon-sousuo"></span>
-              <input type="text" name id placeholder="Search Keys">
-            </div>
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+            <div class="post-gallery-row">
+              <img src="https://static.pexels.com/photos/546819/pexels-photo-546819.jpeg" itemprop="contentUrl">
+            
+          
+
           </div>
         </div>
-        <div class="content">
-          <article class="post-entry">
-    <div class="header">
-      <div class="title">CALayer position 和 anchorPoint 的问题</div>
-      <div class="meta">
-        <span class="item">
-          <span class="iconfont icon-time-circle"></span>
-          <span>2017/08/29</span>
-        </span>
-
-         
-        <span class="item">
-          <span class="iconfont icon-folder"></span>
-          <span>
-              
-                
-                  <a href="/categories/iOS">iOS</a>
-                
-              
-          </span>
-        </span>
-        
-        
-         
-          <span class="item">
-            <span class="iconfont icon-tag1"></span>
-            <span>
-                
-                  
-                    <a href="/tags/iOS">iOS</a>
-                  
-                
-            </span>
-          </span>
-         
-        <span class="item leancloud-visitors" id="https://marauder.top/2017/08/29/CALayer position 和 anchorPoint 的问题/" data-flag-title="CALayer position 和 anchorPoint 的问题">
-          <span class="iconfont icon-eye1"></span>
-          <span class="leancloud-visitors-count"></span>
-        </span>
-      </div>
-      <div>
-      </div>
-    </div>
-    <h2 id="概要："><a href="#概要：" class="headerlink" title="概要："></a>概要：</h2><blockquote>
+        <h2 id="概要："><a href="#概要：" class="headerlink" title="概要："></a>概要：</h2><blockquote>
 <p><code>CALayer</code> 的<code>position</code>白话来讲：<code>position</code>就是layer 自身的<code>anchorPoint</code>相对于父<code>superLayer</code>的坐标位置。<br>常规说来，在iOS上，一个图层的position位于父图层的左上角<br>具体概念参考：<a href="http://kittenyang.com/anchorpoint/" target="_blank" rel="noopener">这将是你最后一次纠结position与anchorPoint</a></p>
 </blockquote>
 <a id="more"></a>
@@ -127,213 +313,212 @@
 <p>现在原点位置画出扇形，然后再设置potision<code>fanshapedLayer.position = fanshapedCenter;</code>最后终于解决了这个问题。</p>
 <h5 id="最后，贴上draw-方法里的全部代码："><a href="#最后，贴上draw-方法里的全部代码：" class="headerlink" title="最后，贴上draw 方法里的全部代码："></a>最后，贴上draw 方法里的全部代码：</h5><figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// An empty implementation adversely affects performance during animation.</span></span><br><span class="line">- (<span class="keyword">void</span>)drawRect:(<span class="built_in">CGRect</span>)rect &#123;</span><br><span class="line">    <span class="comment">// Drawing code</span></span><br><span class="line">    [<span class="keyword">super</span> drawRect:rect];</span><br><span class="line">    [[<span class="built_in">UIColor</span> whiteColor] setFill];</span><br><span class="line">    <span class="built_in">UIRectFill</span>(rect);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">UIImage</span> * image = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"radar_background"</span>];</span><br><span class="line">    [image drawInRect:rect];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">CGFloat</span> pulsingWidth = rect.size.width / <span class="number">2.5</span>;</span><br><span class="line">    <span class="built_in">CGFloat</span> pulsingX = <span class="keyword">self</span>.center.x - pulsingWidth * <span class="number">0.5</span>;</span><br><span class="line">    <span class="built_in">CGFloat</span> pulsingY = <span class="keyword">self</span>.center.y - pulsingWidth * <span class="number">0.5</span>;</span><br><span class="line">    <span class="comment">// 脉冲layer</span></span><br><span class="line">    <span class="built_in">CALayer</span> * pulsingLayer = [<span class="built_in">CALayer</span> layer];</span><br><span class="line">    pulsingLayer.frame = <span class="built_in">CGRectMake</span>(pulsingX, pulsingY, pulsingWidth, pulsingWidth);</span><br><span class="line">    pulsingLayer.borderColor = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">201</span>/<span class="number">255.0</span> green:<span class="number">201</span>/<span class="number">255.0</span> blue:<span class="number">201</span>/<span class="number">255.0</span> alpha:<span class="number">1</span>].CGColor;</span><br><span class="line">    pulsingLayer.cornerRadius = pulsingWidth * <span class="number">0.5</span>;</span><br><span class="line">    pulsingLayer.backgroundColor = [<span class="built_in">UIColor</span> whiteColor].CGColor;<span class="comment">//这里必须设置layer层的背景颜色，默认应该是透明的，导致设置的阴影颜色无法显示出来</span></span><br><span class="line">    pulsingLayer.shadowColor = [<span class="built_in">UIColor</span> blackColor].CGColor;</span><br><span class="line">    pulsingLayer.shadowOffset = <span class="built_in">CGSizeMake</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    pulsingLayer.shadowOpacity = <span class="number">1</span>;</span><br><span class="line">    pulsingLayer.shadowRadius = <span class="number">5</span>;</span><br><span class="line">    [<span class="keyword">self</span>.layer addSublayer:pulsingLayer];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 缩放动画</span></span><br><span class="line">    <span class="built_in">CABasicAnimation</span> * scaleAnimation = [<span class="built_in">CABasicAnimation</span> animationWithKeyPath:<span class="string">@"transform.scale"</span>];</span><br><span class="line">    scaleAnimation.autoreverses = <span class="literal">false</span>;</span><br><span class="line">    scaleAnimation.fromValue = @<span class="number">1.0</span>f;</span><br><span class="line">    scaleAnimation.toValue = @<span class="number">2.0</span>f;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 透明动画</span></span><br><span class="line">    <span class="built_in">CAKeyframeAnimation</span> * opacityAnimation = [<span class="built_in">CAKeyframeAnimation</span> animationWithKeyPath:<span class="string">@"opacity"</span>];</span><br><span class="line">    opacityAnimation.keyTimes = @[@<span class="number">0</span>,@<span class="number">0.1</span>,@<span class="number">0.2</span>,@<span class="number">0.3</span>,@<span class="number">0.4</span>,@<span class="number">0.5</span>,@<span class="number">0.6</span>,@<span class="number">0.7</span>,@<span class="number">0.8</span>,@<span class="number">0.9</span>,@<span class="number">1</span>];</span><br><span class="line">    opacityAnimation.values = @[@<span class="number">1</span>,@<span class="number">0.9</span>,@<span class="number">0.8</span>,@<span class="number">0.7</span>,@<span class="number">0.6</span>,@<span class="number">0.5</span>,@<span class="number">0.4</span>,@<span class="number">0.3</span>,@<span class="number">0.2</span>,@<span class="number">0.1</span>,@<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">CAAnimationGroup</span> * animationGroup = [<span class="built_in">CAAnimationGroup</span> animation];</span><br><span class="line">    animationGroup.beginTime = <span class="built_in">CACurrentMediaTime</span>() + <span class="number">1</span>;</span><br><span class="line">    animationGroup.fillMode = kCAFillModeBackwards;</span><br><span class="line">    animationGroup.repeatCount = HUGE_VAL;</span><br><span class="line">    animationGroup.timingFunction = [<span class="built_in">CAMediaTimingFunction</span> functionWithName:kCAMediaTimingFunctionLinear];</span><br><span class="line">    animationGroup.duration = <span class="number">2</span>;</span><br><span class="line">    animationGroup.animations = @[scaleAnimation,opacityAnimation];</span><br><span class="line">    [pulsingLayer addAnimation:animationGroup forKey:<span class="string">@"pulse"</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 中间圆环</span></span><br><span class="line">    <span class="built_in">CALayer</span> * middleCycle = [<span class="built_in">CALayer</span> layer];</span><br><span class="line">    middleCycle.frame = <span class="built_in">CGRectMake</span>(pulsingX, pulsingY, pulsingWidth, pulsingWidth);</span><br><span class="line">    middleCycle.cornerRadius = pulsingWidth * <span class="number">0.5</span>;</span><br><span class="line">    middleCycle.borderColor = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">41</span>/<span class="number">255.0</span> green:<span class="number">152</span>/<span class="number">255.0</span> blue:<span class="number">241</span>/<span class="number">255.0</span> alpha:<span class="number">1</span>].CGColor;</span><br><span class="line">    middleCycle.backgroundColor = [<span class="built_in">UIColor</span> whiteColor].CGColor;</span><br><span class="line">    middleCycle.shadowOffset = <span class="built_in">CGSizeMake</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    middleCycle.borderWidth = <span class="number">1</span>;</span><br><span class="line">    middleCycle.shadowRadius = <span class="number">3</span>;</span><br><span class="line">    middleCycle.shadowOpacity = <span class="number">1</span>;</span><br><span class="line">    middleCycle.shadowColor = [<span class="built_in">UIColor</span> lightGrayColor].CGColor;</span><br><span class="line">    [<span class="keyword">self</span>.layer addSublayer:middleCycle];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加到self.layer上</span></span><br><span class="line">    <span class="built_in">CGPoint</span> fanshapedCenter = <span class="keyword">self</span>.center;</span><br><span class="line">    <span class="built_in">UIBezierPath</span> * fanshapedPath = [<span class="built_in">UIBezierPath</span> bezierPath];</span><br><span class="line">    [fanshapedPath addArcWithCenter:<span class="built_in">CGPointZero</span> radius:(pulsingWidth + <span class="number">20</span>) * <span class="number">0.5</span> startAngle:<span class="number">3</span> * M_PI / <span class="number">2</span> endAngle:<span class="number">0</span> clockwise:<span class="literal">YES</span>];</span><br><span class="line">    [fanshapedPath addLineToPoint:<span class="built_in">CGPointZero</span>];</span><br><span class="line">    [fanshapedPath closePath];</span><br><span class="line">    <span class="built_in">CAShapeLayer</span> * fanshapedLayer = [<span class="built_in">CAShapeLayer</span> layer];</span><br><span class="line">    fanshapedLayer.path = fanshapedPath.CGPath;</span><br><span class="line">    fanshapedLayer.opacity = <span class="number">0.7</span>;</span><br><span class="line">    fanshapedLayer.position = fanshapedCenter;</span><br><span class="line">    fanshapedLayer.fillColor = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">41</span>/<span class="number">255.0</span> green:<span class="number">152</span>/<span class="number">255.0</span> blue:<span class="number">241</span>/<span class="number">255.0</span> alpha:<span class="number">1</span>].CGColor;</span><br><span class="line">    [<span class="keyword">self</span>.layer addSublayer:fanshapedLayer];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加到middleCycle上</span></span><br><span class="line"><span class="comment">//    [fanshapedPath addArcWithCenter:CGPointMake(0,0) radius:(pulsingWidth + 20) * 0.5 startAngle:3 * M_PI / 2 endAngle:0 clockwise:YES];</span></span><br><span class="line"><span class="comment">//    [fanshapedPath addLineToPoint:CGPointZero];</span></span><br><span class="line"><span class="comment">//    CAShapeLayer * fanshaped = [CAShapeLayer layer];</span></span><br><span class="line"><span class="comment">//    fanshaped.fillColor = [UIColor colorWithRed:41/255.0 green:152/255.0 blue:241/255.0 alpha:1].CGColor;</span></span><br><span class="line"><span class="comment">//    fanshaped.opacity = 0.7;</span></span><br><span class="line"><span class="comment">//    fanshaped.position = CGPointMake(middleCycle.frame.size.width * 0.5, middleCycle.frame.size.height * 0.5);</span></span><br><span class="line"><span class="comment">//    [fanshapedPath closePath];</span></span><br><span class="line"><span class="comment">//    fanshaped.path = fanshapedPath.CGPath;</span></span><br><span class="line"><span class="comment">//    [middleCycle addSublayer:fanshaped];</span></span><br><span class="line"><span class="comment">//    NSLog(@"fanshaped==== frame:%@,anchorPoint:%@,bounds:%@,position:%@",NSStringFromCGRect(fanshaped.frame),NSStringFromCGPoint(fanshaped.anchorPoint),NSStringFromCGRect(fanshaped.bounds),NSStringFromCGPoint(fanshaped.position));</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">CABasicAnimation</span> *rotationAnimation = [<span class="built_in">CABasicAnimation</span> animationWithKeyPath:<span class="string">@"transform.rotation.z"</span>];</span><br><span class="line">    rotationAnimation.toValue = [<span class="built_in">NSNumber</span> numberWithFloat: <span class="number">3</span> * M_PI ];</span><br><span class="line">    rotationAnimation.duration = <span class="number">8</span>;</span><br><span class="line">    rotationAnimation.cumulative = <span class="literal">YES</span>;</span><br><span class="line">    rotationAnimation.removedOnCompletion = <span class="literal">NO</span>;</span><br><span class="line">    rotationAnimation.repeatCount = MAXFLOAT;</span><br><span class="line">    rotationAnimation.fillMode = kCAFillModeForwards;</span><br><span class="line">    <span class="comment">//    [middleCycle addAnimation:rotationAnimation forKey:@"rotation"];</span></span><br><span class="line"></span><br><span class="line">    [fanshapedLayer addAnimation:rotationAnimation forKey:<span class="string">@"rotation"</span>];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-  
-
-  
-
-  </article></div>
-
-  <div class="post-copyright">
-    <div class="auth">
-      本文作者：<a href="https://marauder.top">MRNAN</a>
     </div>
-    <div class="link">
-      永久链接：<a href="https://marauder.top/2017/08/29/CALayer position 和 anchorPoint 的问题/">https://marauder.top/2017/08/29/CALayer position 和 anchorPoint 的问题/</a>
-    </div>
-    <div class="declare">
-      版权声明：本文首发于<a href="https://marauder.top">MRNAN</a>的博客，转载请注明出处！
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2017/08/27/杂记/" rel="next" title="杂记">
+                  <i class="fa fa-chevron-left"></i> 杂记
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/08/22/js基础知识/" rel="prev" title="js基础知识">
+                  js基础知识 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
 
-  <div id="comment"></div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
-        </div>
-        <footer>
-          <div class="copyright">
-            ©2019 <a href="https://marauder.top">MRNAN</a>. Powered by Hexo &
-            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu">hexo-theme-huhu</a>
-          </div>
-          
-        </footer>
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概要："><span class="nav-number">1.</span> <span class="nav-text">概要：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正文："><span class="nav-number">1.1.</span> <span class="nav-text">正文：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-外部扩散的脉冲layer。"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">1.外部扩散的脉冲layer。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-雷达扫面的内圈layer。"><span class="nav-number">1.1.0.0.2.</span> <span class="nav-text">2.雷达扫面的内圈layer。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-雷达扫描的扇形layer。"><span class="nav-number">1.1.0.0.3.</span> <span class="nav-text">3.雷达扫描的扇形layer。</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#最后，贴上draw-方法里的全部代码："><span class="nav-number">1.1.0.1.</span> <span class="nav-text">最后，贴上draw 方法里的全部代码：</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        
       </div>
-      <div id="card-wrap">
-        <div class="card">
-          <div class="logo-widget">
-            <div class="author">
-              Utone
-            </div>
-            <div class="logo" style="background-image: url('/images/logo.jpeg')"></div>
-          </div>
-          <div class="locate-widget">
-            <div class="city-wrap">
-              <span class="iconfont icon-dangdi"></span>
-              <span id="city-name"></span>
-            </div>
-            <div class="weather-wrap">
-              <div id="weather-img">
-                <svg class="icon weather" aria-hidden="true">
-                  <use xlink:href="#icon-qingjiafeng"/>
-                </svg>
-              </div>
-              <div id="weather-detail"></div>
-            </div>
-          </div>
-          <div class="follow-widget">
-            
-            <a href="https://github.com/Nsir15" target="_block">
-              <span class="iconfont icon-github"></span>
-            </a>
-             
-            <a href="/atom.xml" target="_block">
-              <span class="iconfont icon-rss"></span>
-            </a>
-            
-          </div>
-           
-          <div class="toc-widget">
-            <div class="title">
-              <span>Toc</span>
-            </div>
-            <div class="post-toc">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概要："><span class="toc-text">概要：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#正文："><span class="toc-text">正文：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-外部扩散的脉冲layer。"><span class="toc-text">1.外部扩散的脉冲layer。</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-雷达扫面的内圈layer。"><span class="toc-text">2.雷达扫面的内圈layer。</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-雷达扫描的扇形layer。"><span class="toc-text">3.雷达扫描的扇形layer。</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#最后，贴上draw-方法里的全部代码："><span class="toc-text">最后，贴上draw 方法里的全部代码：</span></a></li></ol></li></ol>
-            </div>
-          </div>
-           
-          <div class="category-widget">
-            <div class="title">
-              <span>Categories</span>
-              <span><a href="/archives">···</a></span>
-            </div>
-            <div class="list">
-              <ul>
-                 
-                <li>
-                  <a href="/categories/前端/">
-                    前端
-                  </a>
-                </li>
-                  
-                <li>
-                  <a href="/categories/git/">
-                    git
-                  </a>
-                </li>
-                  
-                <li>
-                  <a href="/categories/iOS/">
-                    iOS
-                  </a>
-                </li>
-                  
-                <li>
-                  <a href="/categories/小程序/">
-                    小程序
-                  </a>
-                </li>
-                  
-                <li>
-                  <a href="/categories/hexo/">
-                    hexo
-                  </a>
-                </li>
-                 
-              </ul>
-            </div>
-          </div>
-          <div class="tag-widget">
-            <div class="title">
-              <span>Tag Cloud</span>
-              <span><a href>···</a></span>
-            </div>
-            <div class="tag-cloud">
-              <a href="/tags/git/" style="font-size: 13px; color: #4a4a4a">git</a> <a href="/tags/hexo/" style="font-size: 13px; color: #4a4a4a">hexo</a> <a href="/tags/iOS/" style="font-size: 20px; color: #4a4a4a">iOS</a> <a href="/tags/前端/" style="font-size: 16.5px; color: #4a4a4a">前端</a> <a href="/tags/小程序/" style="font-size: 13px; color: #4a4a4a">小程序</a>
-            </div>
-          </div>
-        </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MRNAN</p>
+  <div class="site-description" itemprop="description">世界那么污，我想去看看。。。</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
       </div>
     
-  </body>
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+        
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span>
+        
+      </div>
+    
+  </nav>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MRNAN</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
   
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/muse.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
 </html>
-<script type="text/javascript">
-  window.THEME_CONFIG = JSON.parse('{"title":"MRNAN","subtitle":"个人博客","description":"世界那么污，我想去看看。。。","author":"MRNAN","language":"zh-Hans","timezone":null,"url":"https://marauder.top","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"huhu","deploy":{"type":"git","repo":{"github":"git@github.com:Nsir15/Nsir15.github.io.git","oschina":"https://gitee.com/Nsir/Nsir.oschina.io.git"}},"ignore":[],"search":{"path":"search.xml","field":"post","format":"html","limit":10000},"index_generator":{"per_page":10,"order_by":"-date","path":""},"category_generator":{"per_page":10},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"tag_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"menu":{"home":"/","archives":"/archives","about":"/about"},"logo":"/images/logo.png","categories_max":5,"tags_max":10,"favicon":"/images/favicon.ico","site_search":true,"rss":"/atom.xml","follow":{"github":"https://github.com/Nsir15"},"search_url":"/search.xml","site_icp":"","site_friends":null,"busuanzi":true,"share":["weibo","weixin","qqkongjian","QQ","douban","facebook","twitter","google"],"cdn_module":{"av_min":"https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min","jquery":"https://cdn.bootcss.com/jquery/3.4.1/jquery.min","busuanzi":"//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini","confirm":"https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min","fancybox":"https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"},"baidu_push":true}')
-  window.loadJs = function(d, m, a) {
-    var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
-    var b = document.createElement('script')
-    b.defer = true
-    b.setAttribute('type', 'text/javascript')
-    b.setAttribute('charset', 'UTF-8')
-    b.setAttribute('async', 'true')
-    b.setAttribute('src', d)
-    m && b.setAttribute('data-main', '/scripts/app')
-    if (typeof a === 'function') {
-      if (window.attachEvent) {
-        b.onreadystatechange = function() {
-          var e = b.readyState
-          if (e === 'loaded' || e === 'complete') {
-            b.onreadystatechange = null
-            a()
-          }
-        }
-      } else {
-        b.onload = a
-      }
-    }
-    c.appendChild(b)
-  }
-  loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {
-    require.config({
-      paths: {
-        // site
-        share: 'share',
-        iconfont: 'iconfont',
-        hodgepodge: 'hodgepodge',
-        valine: ['cdn/Valine.min'],
-
-        // cdn
-        av: ['https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min', 'cdn/av-min'],
-        jquery: ['https://cdn.bootcss.com/jquery/3.4.1/jquery.min', 'cdn/jquery.min'],
-        busuanzi: ['//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini', 'cdn/busuanzi.pure.mini'],
-        confirm: ['https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min', 'cdn/jquery.confirm.min'],
-        fancybox: ['https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min', 'cdn/jquery.fancybox.min']
-      },
-
-      map: {
-        '*': {
-          // css: '/scripts/cdn/css-min.js'
-          css: 'https://cdn.bootcss.com/require-css/0.1.10/css.min.js'
-        }
-      },
-
-      shim: {
-        fancybox: {
-          // deps: ['css!../style/fancybox']
-          deps: ['css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css']
-        },
-        confirm: {
-          // deps: ['css!../style/confirm']
-          deps: ['css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css']
-        }
-      },
-
-      // 加载超时
-      waitSeconds: 3
-    })
-  })
-</script>
-
-<script>
-  ;(function() {
-    var bp = document.createElement('script')
-    var curProtocol = window.location.protocol.split(':')[0]
-    if (curProtocol === 'https') {
-      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
-    } else {
-      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
-    }
-    var s = document.getElementsByTagName('script')[0]
-    s.parentNode.insertBefore(bp, s)
-  })()
-</script>
-
